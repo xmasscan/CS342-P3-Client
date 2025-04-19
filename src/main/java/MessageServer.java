@@ -30,5 +30,8 @@ public class MessageServer implements Serializable {
     }
 
 
+    //implement giving player their gold/elo/ and a active client list
+    //implement giving replies
+
 
 }
