@@ -50,7 +50,7 @@ public class Client extends Thread{
 			e.printStackTrace();
 		}
 		try{
-			Message response = (Message) in.readObject();
+			MessageServer response = (MessageServer) in.readObject();
 			this.loggedIn = validate(response);
 		} catch(Exception e){
 			e.printStackTrace();
@@ -64,7 +64,7 @@ public class Client extends Thread{
 	 */
 	public void send(String data) {
 
-		Message msg = Message.chat(data);
+		Message msg = Message.chat(data, "");
 		try {
 			out.writeObject(msg);
 		} catch (IOException e) {
@@ -76,8 +76,8 @@ public class Client extends Thread{
 	// Server Message Standard:
 	// 0 = Accept
 	// 1 = Reject
-	public boolean validate(Message msg){
-		if(msg.messageType == 0){
+	public boolean validate(MessageServer msg){
+		if(msg.messageType == 2){
 			return true;
 		}
 		else if(msg.messageType == 1){
