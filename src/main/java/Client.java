@@ -41,7 +41,8 @@ public class Client extends Thread{
 	public void send(String data) {
 		
 		try {
-			out.writeObject(data);
+			Message msg = Message.chat(data);
+			out.writeObject(msg);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

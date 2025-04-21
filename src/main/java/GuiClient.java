@@ -16,7 +16,7 @@ public class GuiClient extends Application{
 		clientThread.start();
 		Scanner s = new Scanner(System.in);
 		while (s.hasNext()){
-			String x = s.next();
+			String x = s.nextLine();
 			clientThread.send(x);
 		}
 
