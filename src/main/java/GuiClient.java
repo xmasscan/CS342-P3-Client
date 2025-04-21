@@ -14,6 +14,7 @@ public class GuiClient extends Application{
 	public static void main(String[] args) {
 		Client clientThread = new Client();
 		clientThread.start();
+		launch(args);
 		Scanner s = new Scanner(System.in);
 		// Sign on attempt, will just work rn for testing
 		// TODO: implement better sign on attempt handling
@@ -30,7 +31,6 @@ public class GuiClient extends Application{
 			String x = s.nextLine();
 			clientThread.send(x);
 		}
-		launch(args);
 
 	}
 
