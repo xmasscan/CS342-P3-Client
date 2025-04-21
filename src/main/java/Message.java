@@ -96,6 +96,20 @@ public class Message implements Serializable {
     }
 
     /**
+     * Sends a move attempt to the Connect4 Server.
+     * @param row
+     *  The row the user is attempting to drop a piece into.
+     * @return
+     *  Move attempt Message
+     */
+    public static Message move(int row){
+        int messageType = 2;
+        ArrayList<String> argv = new ArrayList<>();
+        argv.add(Integer.toString(row));
+        return new Message(messageType, argv);
+    }
+
+    /**
      * Constructs a "Chat Message" message to send to the server.
      * @param message
      *  The chat message for the user to send to the server.
@@ -110,12 +124,10 @@ public class Message implements Serializable {
         return new Message(messageType, argv);
     }
 
-    public void updateStatus(String user, int coordinate){
+    // TBD, do what you will with this later
+    // remember to fittingly update the signature and behavior if u do
+    public void updateStatus(int coordinate){
 
     }
 
-    public void move(String user, int coordinate){
-
-
-    }
 }
