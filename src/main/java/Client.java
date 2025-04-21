@@ -8,13 +8,11 @@ import java.util.function.Consumer;
 
 
 public class Client extends Thread{
-
-	
 	Socket socketClient;
-	
 	ObjectOutputStream out;
 	ObjectInputStream in;
 
+	boolean loggedIn = false;
 	
 	public void run() {
 		
@@ -25,27 +23,68 @@ public class Client extends Thread{
 	   	 	socketClient.setTcpNoDelay(true);
 
 		}
-		catch(Exception e) {}
-		
-		while(true) {
-			 
-			try {
-				String message = in.readObject().toString();
-				System.out.println(message);
-			}
-			catch(Exception e) {}
+		catch(Exception e) {
+			e.printStackTrace();
 		}
-	
+
+		while(true) {
+			if (loggedIn) {
+				try {
+					Message message = (Message) in.readObject();
+					System.out.println(message);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
     }
-	
+
+	// TODO: Implement password
+	public void signOn(String username){
+		Message msg = Message.signOn(username);
+		try{
+			out.writeObject(msg);
+		} catch (IOException e) {
+			System.err.println("Fatal Error:" + e);
+			e.printStackTrace();
+		}
+		try{
+			Message response = (Message) in.readObject();
+			this.loggedIn = validate(response);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Send a Chat Message to the Connect4 Server
+	 * @param data
+	 * 	The message to send in chat!
+	 */
 	public void send(String data) {
-		
+
+		Message msg = Message.chat(data);
 		try {
-			Message msg = Message.chat(data);
 			out.writeObject(msg);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	// Server Message Standard:
+	// 0 = Accept
+	// 1 = Reject
+	public boolean validate(Message msg){
+		if(msg.messageType == 0){
+			return true;
+		}
+		else if(msg.messageType == 1){
+			return false;
+		}
+		else{
+			throw new RuntimeException("Invalid Message!");
 		}
 	}
 

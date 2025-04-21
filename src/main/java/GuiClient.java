@@ -15,13 +15,22 @@ public class GuiClient extends Application{
 		Client clientThread = new Client();
 		clientThread.start();
 		Scanner s = new Scanner(System.in);
-		while (s.hasNext()){
+		// Sign on attempt, will just work rn for testing
+		// TODO: implement better sign on attempt handling
+		boolean loggedIn = false;
+		// TODO: fix nextLine happening before printing & handle rejections
+		System.out.println("Enter a username: ");
+		while(!loggedIn && s.hasNextLine()){
+			String username = s.nextLine();
+			clientThread.signOn(username);
+			loggedIn = clientThread.loggedIn;
+		}
+
+		while (s.hasNextLine()){
 			String x = s.nextLine();
 			clientThread.send(x);
 		}
-
 		launch(args);
-
 
 	}
 
