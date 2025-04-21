@@ -27,10 +27,49 @@ public class Message implements Serializable {
         this.arguments = argv;
     }
 
+    // Functions are static bcs they don't require an object to operate on
+    // That is, they just make objects, they don't mess with em
 
-    public void SignOn(String user, String secret){
+    /**
+     * Sends a SignOn request to the Connect4 Server ; Password Variant
+     * @param user
+     *  Requested Username
+     * @param secret
+     *  Optional; Requested Password
+     * @return
+     *  Message containing the data for a SignOn request.
+     */
+    public static Message SignOn(String user, String secret){
         // Identify this message as a "Sign On" message.
-        this.messageType = 0;
+        int messageType = 0;
+        // Time to build arguments
+        ArrayList<String> argv = new ArrayList<>();
+        // Arguments: username and totally unencrypted password bcs we are security masters :)
+        argv.add(user);
+        argv.add(secret);
+        // Return new SignOn request!
+        return new Message(messageType, argv);
+    }
+
+    /**
+     * Sends a SignOn request to the Connect4 Server ; Passwordless Variant
+     * @param user
+     *  Requested Username
+     * @return
+     *  Message containing the data for a SignOn request.
+     */
+    public static Message SignOn(String user){
+        // Identify this message as a "Sign On" message.
+        int messageType = 0;
+        // Time to build arguments
+        ArrayList<String> argv = new ArrayList<>();
+        // Arguments: username
+        argv.add(user);
+        // Return new SignOn request!
+        return new Message(messageType, argv);
+    }
+
+    public void CreateGame(String user, Integer game, String player)  {
 
     }
 
@@ -39,7 +78,7 @@ public class Message implements Serializable {
      * @param message
      *  The chat message for the user to send to the server.
      */
-    public Message Chat(String message){
+    public static Message Chat(String message){
         // ID Message as a "Chat Message" message
         int messageType = 3;
         // Build arguments; Only need to send chat message!
@@ -50,21 +89,11 @@ public class Message implements Serializable {
     }
 
     public void StatusUpdate(String user, int coordinate){
-        userName = user;
-        currentColloum = new Integer(coordinate);
-        isStatusUpdate = true;
+
     }
 
     public void Move(String user, int coordinate){
-        userName = user;
-        currentColloum = new Integer(coordinate);
-        isMove = true;
 
-    }
 
-    public void CreateGame(String user, Integer game, String player)  {
-        userName = user;
-        typeOfGame = game;
-        recievingPlayer = player;
     }
 }
