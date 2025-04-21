@@ -14,7 +14,7 @@ public class Message implements Serializable {
      * int: messageType
      *  The type of message stored within this object!
      *  0 = SignOn ; Init client as a proper user with a username
-     *  1 = ConnectGame ; Create or connect to a game based on arguments
+     *  1 = Connection ; Attempt to connect to a game based on arguments
      *  2 = Move ; send an attempted move to server
      *  3 = Chat ; send chat message to server
      *  4 = StatusUpdate ; TBD, mostly just ambient/bg data that may be important
@@ -39,7 +39,7 @@ public class Message implements Serializable {
      * @return
      *  Message containing the data for a SignOn request.
      */
-    public static Message SignOn(String user, String secret){
+    public static Message signOn(String user, String secret){
         // Identify this message as a "Sign On" message.
         int messageType = 0;
         // Time to build arguments
@@ -58,7 +58,7 @@ public class Message implements Serializable {
      * @return
      *  Message containing the data for a SignOn request.
      */
-    public static Message SignOn(String user){
+    public static Message signOn(String user){
         // Identify this message as a "Sign On" message.
         int messageType = 0;
         // Time to build arguments
@@ -69,8 +69,30 @@ public class Message implements Serializable {
         return new Message(messageType, argv);
     }
 
-    public void CreateGame(String user, Integer game, String player)  {
+    /**
+     * Sends a connection request to the Connect4 server.
+     * Quick match variant; User is matched to first available game.
+     * @return
+     *  Quick Match Connection Request Message
+     */
+    public static Message connect()  {
+        int messageType = 1;
+        return new Message(messageType, null);
+    }
 
+    /**
+     * Sends a connection request to the Connect4 server.
+     * Specfic match variant; User attempts to connect to a specfic game based on its ID.
+     * @param gameID
+     *  The ID of the Game to attempt to connect to.
+     * @return
+     *  Game Connection Request Message
+     */
+    public static Message connect(int gameID){
+        int messageType = 1;
+        ArrayList<String> argv = new ArrayList<>();
+        argv.add(Integer.toString(gameID));
+        return new Message(messageType, argv);
     }
 
     /**
@@ -78,7 +100,7 @@ public class Message implements Serializable {
      * @param message
      *  The chat message for the user to send to the server.
      */
-    public static Message Chat(String message){
+    public static Message chat(String message){
         // ID Message as a "Chat Message" message
         int messageType = 3;
         // Build arguments; Only need to send chat message!
@@ -88,11 +110,11 @@ public class Message implements Serializable {
         return new Message(messageType, argv);
     }
 
-    public void StatusUpdate(String user, int coordinate){
+    public void updateStatus(String user, int coordinate){
 
     }
 
-    public void Move(String user, int coordinate){
+    public void move(String user, int coordinate){
 
 
     }
