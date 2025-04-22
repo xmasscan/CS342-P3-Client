@@ -17,7 +17,7 @@
     <Label text="User Name:"
            GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
-    <TextField
+    <TextField fx:id="usernameField"
             GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
     <Label text="Password:"
@@ -26,6 +26,9 @@
     <PasswordField fx:id="passwordField"
                    GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-    <CheckBox xmlns:fx="http://javafx.com/fxml" fx:id="guestCheckBox" GridPane.columnIndex="2" GridPane.rowIndex="2"
+    <CheckBox fx:id="guestCheckBox" GridPane.columnIndex="2" GridPane.rowIndex="2"
     onAction="#togglePassword"/>
+
+    <Button text="Sign In!" GridPane.columnIndex="0" GridPane.rowIndex="3"
+    onAction="#attemptSignIn"/>
 </GridPane>
