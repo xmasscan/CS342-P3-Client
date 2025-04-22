@@ -4,60 +4,72 @@
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
 <?import javafx.geometry.Insets?>
-<?import ../User.java?>
 
-<GridPane fx:controller="connect4fxml.LoginControllers" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<GridPane fx:controller="connect4fxml.LoginControllers" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" maxHeight = "-Infinity" minHeight = "-Infinity" maxWidth = "-Infinity" minWidth = "-Infinity">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+<!--<columnConstraints>
+    <columnConstraints hgrow = "SOMETIMES" maxWidth = "260.0" minWidth = "260.0"/>
+    <columnConstraints hgrow = "SOMETIMES" maxWidth = "200.0" minWidth = "200.0"/>
+</columnConstraints>
+<rowConstraints>
+    <rowConstraints vgrow = "SOMETIMES" maxHeight = "120.0" minHeight = "120.0"/>
+    <rowConstraints vgrow = "SOMETIMES" maxHeight = "200.0" minHeight = "200.0"/>
+</rowConstraints>  -->
+
     <!--User should store information for this gridpane-->
-    <VBox GridPane.columnIndex="0" GridPane.rowIndex="0">
-        <Children>
-        <User/>
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" maxWidth = "380.0" minWidth = "380" maxHeight = "250.0" minHeight = "250.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;">
+        <children>
+        <!--<User/>-->
         <Label text = "current User"/>
         <HBox>
             <ImageView >
                 
             </ImageView>
             <VBox>
-                <Children>
+                <children>
                     <Label text = "Gold:"/>
                     <Label text = "Elo"/>
                     <Label text = "Win-Loss ratio"/>
-                </Children>
+                </children>
             </VBox>
         </HBox>
 
-        </Children>  
+        </children>  
     </VBox>
 
     <!--this will need to change depending on the boder pane at 1, 1-->
-    <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="0">
-        <Center>
+    <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="0" maxWidth = "500.0" minWidth = "500" maxHeight = "250.0" minHeight = "250.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;">
+        <center>
             <Button text = "Start Game"></Button>
-        </Center>
+        </center>
     </BorderPane>
 
-    <BorderPane GridPane.columnIndex="0" GridPane.rowIndex="1">
-        <Center>
+    <BorderPane GridPane.columnIndex="0" GridPane.rowIndex="1" maxWidth = "380.0" minWidth = "380" maxHeight = "250.0" minHeight = "250.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;">
+        <center>
             <Button text = "Sign out"></Button>
-        </Center>
+        </center>
     </BorderPane>
 
-    <BorderPane GridPane.columnIndex="0" GridPane.rowIndex="1">
-        <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
-        <Center>
-            <HBox>
-                <Button text = "Play Against AI"></Button>
-                <Button text = "Play Against User"></Button>
-                <Button text = "Play Game"></Button>
-
+    <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="1" maxWidth = "400.0" minWidth = "500" maxHeight = "250.0" minHeight = "250.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;">
+        <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
+        <center>
+            <HBox alignment = "CENTER" spacing = "15">
+                <padding><Insets  right="5" left="5"/></padding>
+                
+                
+                <Button text = "Play Against AI" maxWidth = "140" minWidth = "140" maxHeight = "200.0" minHeight = "200.0"></Button>
+                <Button text = "Play Against User" maxWidth = "140" minWidth = "140" maxHeight = "200.0" minHeight = "200.0"></Button>
+                <Button text = "Play Game" maxWidth = "140" minWidth = "140" maxHeight = "200.0" minHeight = "200.0"></Button>
+                
             </HBox>
-        </Center>
+        </center>
     </BorderPane>
 
 
