@@ -43,6 +43,15 @@ public class Client extends Thread{
 
     }
 
+	public void passOnMessage(Message msg) {
+		try{
+			out.writeObject(msg);
+		} catch (IOException e) {
+			System.err.println("Fatal Error:" + e);
+			e.printStackTrace();
+		}
+	}
+
 	public void signOn(String username){
 		Message msg = Message.signOn(username);
 		// Send Sign On Request to Server

@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.geometry.Insets?>
-<GridPane fx:controller="connect4fxml.LoginControllers" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<GridPane fx:controller="LoginControllers" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
     <Text text="Connect4 Online"
           GridPane.columnIndex="0" GridPane.rowIndex="0"
@@ -20,9 +20,11 @@
     <TextField fx:id="usernameField"
             GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-    <Label text="Password:"
+    <Label  text="Password:"
            GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+           <TextField fx:id="password"
+            GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-    <Button text="Sign In!" GridPane.columnIndex="0" GridPane.rowIndex="3"
+    <Button fx:id = "signOnButton" text="Sign In!" GridPane.columnIndex="0" GridPane.rowIndex="3"
     onAction="#attemptSignIn"/>
 </GridPane>

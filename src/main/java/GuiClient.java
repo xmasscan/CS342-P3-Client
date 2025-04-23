@@ -10,29 +10,27 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class GuiClient extends Application{
-
+	static Client clientThread = new Client();;
 	
 	public static void main(String[] args) {
-		Client clientThread = new Client();
 		clientThread.start();
 		launch(args);
 
 		Scanner s = new Scanner(System.in);
 		boolean loggedIn = false;
 		System.out.println("Enter a username: ");
-		while(!loggedIn){
+		/*while(!loggedIn){
 			String username = s.nextLine();
 			clientThread.signOn(username);
 			loggedIn = clientThread.loggedIn;
-		}
-		System.out.println("Logged in!");
+		}*/
 		// User Logged in, attempt to connect to game
 		boolean connected = false;
-		while(!connected){
+		/*while(!connected){
 			System.out.println("Sending a game connection request...");
 			clientThread.connect();
 			connected = clientThread.connected;
-		}
+		}*/
 
 		while (s.hasNextLine()){
 			String x = s.nextLine();
