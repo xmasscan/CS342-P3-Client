@@ -77,10 +77,13 @@ public class Message implements Serializable {
      */
     public static Message connect()  {
         int messageType = 1;
-        return new Message(messageType, null);
+        ArrayList<String> argv = new ArrayList<>();
+        argv.add("CONNECT");
+        return new Message(messageType, argv);
     }
 
     /**
+     * DEPRECATED
      * Sends a connection request to the Connect4 server.
      * Specfic match variant; User attempts to connect to a specfic game based on its ID.
      * @param gameID
@@ -89,7 +92,7 @@ public class Message implements Serializable {
      *  Game Connection Request Message
      */
     public static Message connect(int gameID){
-        int messageType = 2;
+        int messageType = 1;
         ArrayList<String> argv = new ArrayList<>();
         argv.add(Integer.toString(gameID));
         return new Message(messageType, argv);
