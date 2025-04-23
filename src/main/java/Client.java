@@ -12,7 +12,10 @@ public class Client extends Thread{
 	ObjectOutputStream out;
 	ObjectInputStream in;
 
+	// Is user logged into the server?
 	boolean loggedIn = false;
+	// Is user connected to a game?
+	boolean connected = false;
 	
 	public void run() {
 		
@@ -55,6 +58,26 @@ public class Client extends Thread{
 			ServerMessage response = (ServerMessage) in.readObject();
 			if(validate(response)){
 				this.loggedIn = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void connect(){
+		Message msg = Message.connect();
+		// Send Connection Request
+		try{
+			out.writeObject(msg);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// Wait for response
+		try{
+			ServerMessage response = (ServerMessage) in.readObject();
+			if(validate(response)){
+				this.connected = true;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

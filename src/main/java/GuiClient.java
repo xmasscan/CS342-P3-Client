@@ -26,6 +26,13 @@ public class GuiClient extends Application{
 			loggedIn = clientThread.loggedIn;
 		}
 		System.out.println("Logged in!");
+		// User Logged in, attempt to connect to game
+		boolean connected = false;
+		while(!connected){
+			System.out.println("Sending a game connection request...");
+			clientThread.connect();
+			connected = clientThread.connected;
+		}
 
 		while (s.hasNextLine()){
 			String x = s.nextLine();

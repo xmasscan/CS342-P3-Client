@@ -106,7 +106,7 @@ public class Message implements Serializable {
      *  Move attempt Message
      */
     public static Message move(int row){
-        int messageType = 3;
+        int messageType = 2;
         ArrayList<String> argv = new ArrayList<>();
         argv.add(Integer.toString(row));
         return new Message(messageType, argv);
@@ -119,7 +119,7 @@ public class Message implements Serializable {
      */
     public static Message chat(String message){
         // ID Message as a "Chat Message" message
-        int messageType = 4;
+        int messageType = 3;
 
         // Build arguments; Only need to send chat message!
         ArrayList<String> argv = new ArrayList<>();
