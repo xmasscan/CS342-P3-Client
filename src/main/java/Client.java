@@ -43,6 +43,11 @@ public class Client extends Thread{
 
     }
 
+	/**
+	 * Passes a message generated in the GUI Client to the clientThread
+	 * @param msg
+	 * 	The Message Object to be "passed" to the thread
+	 */
 	public void passOnMessage(Message msg) {
 		try{
 			out.writeObject(msg);
