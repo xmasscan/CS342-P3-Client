@@ -14,6 +14,10 @@ public class GuiClient extends Application{
 		launch(args);
 	}
 
+	static public void signout(){
+
+	}
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("GuiClient.fxml"));

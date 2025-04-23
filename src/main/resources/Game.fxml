@@ -11,7 +11,7 @@
 
 <?import javafx.geometry.Insets?>
 
-<HBox fx:controller="LoginControllers"  xmlns:fx="http://javafx.com/fxml"   maxHeight = "-Infinity" minHeight = "-Infinity" maxWidth = "-Infinity" minWidth = "-Infinity">
+<HBox fx:controller="GameControler"  xmlns:fx="http://javafx.com/fxml"   maxHeight = "-Infinity" minHeight = "-Infinity" maxWidth = "-Infinity" minWidth = "-Infinity">
    <BorderPane>
          <top >
             <HBox spacing="700.0" alignment = "CENTER" maxWidth = "700.0" minWidth = "700" maxHeight = "35.0" minHeight = "35.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;">
