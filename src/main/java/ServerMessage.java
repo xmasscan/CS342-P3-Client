@@ -76,4 +76,24 @@ public class ServerMessage implements Serializable {
         argv.add(message);
         return new ServerMessage(messageType, argv);
     }
+
+    /**
+     * endGame
+     * When the game ends, informs each user if they lost or won.
+     * @param isWinner
+     *  Boolean value determining whether the user won.
+     * @return
+     *  A ServerMessage containing a string informing the user if they won or lost.
+     */
+    public static ServerMessage endGame(boolean isWinner){
+        int messageType = 4;
+        ArrayList<String> argv = new ArrayList<>();
+        if(isWinner){
+            argv.add("Winner");
+        }
+        else{
+            argv.add("Loser");
+        }
+        return new ServerMessage(messageType, argv);
+    }
 }
