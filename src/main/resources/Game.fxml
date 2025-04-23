@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.shape.Circle?>
+
+<?import javafx.geometry.Insets?>
+
+
+<BorderPane fx:controller="connect4fxml.LoginControllers"  xmlns:fx="http://javafx.com/fxml"   maxHeight = "-Infinity" minHeight = "-Infinity" maxWidth = "-Infinity" minWidth = "-Infinity">
+        <top >
+           <HBox spacing="940.0" alignment = "CENTER" maxWidth = "950.0" minWidth = "950" maxHeight = "35.0" minHeight = "35.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;">
+              <children>
+                 <Button text="Button" />
+                 <Button maxWidth = "25" minWidth = "25" text="Button">
+                 </Button>
+              </children>
+              <padding>
+                 <Insets left="50.0" right="50.0" />
+              </padding>
+              <BorderPane.margin>
+                 <Insets bottom="50.0" left = "25" right = "25"/>
+              </BorderPane.margin>
+           </HBox>
+        </top>
+        <center>
+           <HBox BorderPane.alignment="CENTER" spacing = "20" alignment="CENTER">
+              <children>
+                <VBox alignment="CENTER" spacing="2.0" maxWidth = "115.0" minWidth = "115.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
+                    <children>
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                    </children>
+                 </VBox>
+                 <VBox alignment="CENTER" spacing="2.0" maxWidth = "115.0" minWidth = "115.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
+                    <children>
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                    </children>
+                 </VBox>
+                 <VBox alignment="CENTER" spacing="2.0" maxWidth = "115.0" minWidth = "115.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
+                    <children>
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                    </children>
+                 </VBox>
+                 <VBox alignment="CENTER" spacing="2.0" maxWidth = "115.0" minWidth = "115.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
+                    <children>
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                    </children>
+                 </VBox>
+                 <VBox alignment="CENTER" spacing="2.0" maxWidth = "115.0" minWidth = "115.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
+                    <children>
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                    </children>
+                 </VBox>
+                 <VBox alignment="CENTER" spacing="2.0" maxWidth = "115.0" minWidth = "115.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
+                    <children>
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                       <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                    </children>
+                 </VBox>
+              </children>
+           </HBox>
+        </center>
+</BorderPane>

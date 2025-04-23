@@ -37,7 +37,7 @@ public class GuiClient extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
 
 		Scene scene = new Scene(root, 1024, 768);
 
