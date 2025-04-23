@@ -57,8 +57,20 @@ public class Client extends Thread{
 		}
 	}
 
-	public void signOn(String username){
-		Message msg = Message.signOn(username);
+	public ServerMessage retrieveResponse(){
+		ServerMessage response;
+		try{
+			response = (ServerMessage) in.readObject();
+			return response;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public void signOn(String username, String password){
+		Message msg = Message.signOn(username, password);
 		// Send Sign On Request to Server
 		try{
 			out.writeObject(msg);

@@ -22,21 +22,31 @@ public class LoginControllers {
     @FXML private TextField password;
     @FXML private Button signOnButton;
 
+    // So we don't have to write GuiClient.clientThread every time
+    Client clientThread = GuiClient.clientThread;
+
     @FXML protected void attemptSignIn(ActionEvent event) {
         String user = usernameField.getText();
         String pass = password.getText();
-        ArrayList<String> signOnStrings = new ArrayList<String>();
-        signOnStrings.add(user);
-        signOnStrings.add(pass);
-        Message signOnRequest = new Message(0,signOnStrings);
-        
-        GuiClient.clientThread.passOnMessage(signOnRequest);
-        try {
-        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));}
-        catch (IOException e) {
-			System.err.println("Fatal Error:" + e);
-			e.printStackTrace();
+
+        // Attempt to sign in to the server!
+        clientThread.signOn(user, pass);
+
+        // If Login was successful, change screens
+        if(clientThread.loggedIn){
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+                GuiClient.setScene(root);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+//        try {
+//        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));}
+//        catch (IOException e) {
+//			System.err.println("Fatal Error:" + e);
+//			e.printStackTrace();
+//        }
     }
 
     
