@@ -41,12 +41,6 @@ public class LoginControllers {
                 e.printStackTrace();
             }
         }
-//        try {
-//        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));}
-//        catch (IOException e) {
-//			System.err.println("Fatal Error:" + e);
-//			e.printStackTrace();
-//        }
     }
 
     
