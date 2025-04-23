@@ -40,13 +40,23 @@ public class Client extends Thread{
 
     }
 
-	// TODO: Implement password
-	public void signOn(String username, String password){
-		Message msg = Message.signOn(username, password);
+	public void signOn(String username){
+		Message msg = Message.signOn(username);
+		// Send Sign On Request to Server
 		try{
 			out.writeObject(msg);
 		} catch (IOException e) {
 			System.err.println("Fatal Error:" + e);
+			e.printStackTrace();
+		}
+
+		// Wait for response
+		try{
+			ServerMessage response = (ServerMessage) in.readObject();
+			if(validate(response)){
+				this.loggedIn = true;
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -58,7 +68,7 @@ public class Client extends Thread{
 	 */
 	public void send(String data) {
 
-		Message msg = Message.chat(data, "");
+		Message msg = Message.chat(data);
 		try {
 			out.writeObject(msg);
 		} catch (IOException e) {
@@ -70,8 +80,8 @@ public class Client extends Thread{
 	// Server Message Standard:
 	// 0 = Accept
 	// 1 = Reject
-	public boolean validate(MessageServer msg){
-		if(msg.messageType == 2){
+	public boolean validate(ServerMessage msg){
+		if(msg.messageType == 0){
 			return true;
 		}
 		else if(msg.messageType == 1){
