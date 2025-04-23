@@ -22,7 +22,7 @@
 
     <Label  text="Password:"
            GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-           <TextField fx:id="password"
+           <PasswordField fx:id="password"
             GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
     <Button fx:id = "signOnButton" text="Sign In!" GridPane.columnIndex="0" GridPane.rowIndex="3"

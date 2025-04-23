@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 public class LoginControllers {
     @FXML private TextField usernameField;
-    @FXML private TextField password;
+    @FXML private PasswordField password;
     @FXML private Button signOnButton;
 
     // So we don't have to write GuiClient.clientThread every time
