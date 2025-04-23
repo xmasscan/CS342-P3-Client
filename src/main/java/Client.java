@@ -30,7 +30,7 @@ public class Client extends Thread{
 		while(true) {
 			if (loggedIn) {
 				try {
-					Message message = (Message) in.readObject();
+					MessageServer message = (MessageServer) in.readObject();
 					System.out.println(message);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,18 +41,12 @@ public class Client extends Thread{
     }
 
 	// TODO: Implement password
-	public void signOn(String username){
-		Message msg = Message.signOn(username);
+	public void signOn(String username, String password){
+		Message msg = Message.signOn(username, password);
 		try{
 			out.writeObject(msg);
 		} catch (IOException e) {
 			System.err.println("Fatal Error:" + e);
-			e.printStackTrace();
-		}
-		try{
-			MessageServer response = (MessageServer) in.readObject();
-			this.loggedIn = validate(response);
-		} catch(Exception e){
 			e.printStackTrace();
 		}
 	}

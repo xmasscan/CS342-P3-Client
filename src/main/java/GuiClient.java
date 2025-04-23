@@ -14,17 +14,18 @@ public class GuiClient extends Application{
 	
 	public static void main(String[] args) {
 		Client clientThread = new Client();
-		//clientThread.start();
-		launch(args);
+		clientThread.start();
+		//launch(args);
+		System.out.println("Before Scanner ");
 		Scanner s = new Scanner(System.in);
-		// Sign on attempt, will just work rn for testing
+
 		// TODO: implement better sign on attempt handling
-		boolean loggedIn = true;
+		boolean loggedIn = false;
 		// TODO: fix nextLine happening before printing & handle rejections
 		System.out.println("Enter a username: ");
-		while(!loggedIn && s.hasNextLine()){
+		while(!loggedIn){
 			String username = s.nextLine();
-			clientThread.signOn(username);
+			clientThread.signOn(username, "adminTest");
 			loggedIn = clientThread.loggedIn;
 		}
 
@@ -33,11 +34,13 @@ public class GuiClient extends Application{
 			clientThread.send(x);
 		}
 
+		s.close();
+
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("GuiClient.fxml"));
 
 		Scene scene = new Scene(root, 1024, 768);
 
