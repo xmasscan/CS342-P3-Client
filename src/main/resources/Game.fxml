@@ -31,7 +31,7 @@
          <center>
             <HBox BorderPane.alignment="CENTER" spacing = "10" alignment="CENTER">
                <children>
-                  <VBox alignment="CENTER" spacing="2.0" maxWidth = "110.0" minWidth = "110.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
+                  <VBox fx:id = "first" onclick= "#firstMove" alignment="CENTER" spacing="2.0" maxWidth = "110.0" minWidth = "110.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
                      <children>
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
@@ -42,7 +42,7 @@
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" spacing="2.0" maxWidth = "110.0" minWidth = "110.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
+                  <VBox fx:id = "second" onclick= "#secondMove" alignment="CENTER" spacing="2.0" maxWidth = "110.0" minWidth = "110.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
                      <children>
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
@@ -53,7 +53,7 @@
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" spacing="2.0" maxWidth = "110.0" minWidth = "110.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
+                  <VBox fx:id = "third" onclick= "#thirdMove" alignment="CENTER" spacing="2.0" maxWidth = "110.0" minWidth = "110.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
                      <children>
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
@@ -64,7 +64,7 @@
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" spacing="2.0" maxWidth = "110.0" minWidth = "110.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
+                  <VBox fx:id = "fourth" onclick= "#fourthMove" alignment="CENTER" spacing="2.0" maxWidth = "110.0" minWidth = "110.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
                      <children>
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
@@ -75,7 +75,7 @@
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" spacing="2.0" maxWidth = "110.0" minWidth = "110.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
+                  <VBox fx:id = "fifth" onclick= "#fifthMove" alignment="CENTER" spacing="2.0" maxWidth = "110.0" minWidth = "110.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
                      <children>
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
@@ -86,7 +86,7 @@
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" spacing="2.0" maxWidth = "110.0" minWidth = "110.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
+                  <VBox fx:id = "sixth" onclick= "#sixthMove" alignment="CENTER" spacing="2.0" maxWidth = "110.0" minWidth = "110.0" maxHeight = "625.0" minHeight = "625.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;" >
                      <children>
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fill="BLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />

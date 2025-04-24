@@ -16,6 +16,7 @@ public class Client extends Thread{
 	ObjectInputStream in;
 
 	int moveOrder;
+	int lastPeice;
 
 	// Is user logged into the server?
 	boolean loggedIn = false;
@@ -61,6 +62,51 @@ public class Client extends Thread{
 		}
 
     }
+
+
+	/*functions to check that the move is find and everything works
+	 */
+	public Boolean isMyTurn(){
+		if (moveOrder == 0) {
+			return true;
+		}
+		return false;
+	}
+
+	//returns true if the collumn is not full
+	public Boolean checkValidMove(int collumn){
+
+		return true;
+	}
+
+	public void makeMove(int collumn) {
+		Message msg = Message.move(collumn);
+		try {
+			out.writeObject(msg);
+		} catch (Exception e) {
+			System.out.print("womp womp");
+		}
+
+		try{
+			ServerMessage response = (ServerMessage) in.readObject();
+			if(validate(response)){
+				moveOrder = 1;
+				//add the thing to the game
+
+				//gives the position of the peice from top where the top = 0 and bottom = 6
+				lastPeice = 5;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+	}
+
+	//gives the position of the peice from top where the top = 0 and bottom = 6
+	public int whichColor() {
+		return lastPeice;
+	}
 
 	/**
 	 * Passes a message generated in the GUI Client to the clientThread
