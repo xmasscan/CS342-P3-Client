@@ -145,7 +145,7 @@ public class Client extends Thread{
 	// 0 = Accept
 	// 1 = Reject
 	public boolean validate(ServerMessage msg){
-		if(msg.messageType == 0 || msg.messageType == 6 || msg.messageType == 7){
+		if(msg.messageType == 0){
 			
 			return true;
 		}
