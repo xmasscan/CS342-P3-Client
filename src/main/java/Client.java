@@ -86,6 +86,7 @@ public class Client extends Thread{
 	public void signOn(String username, String password){
 		Message msg = Message.signOn(username, password);
 		// Send Sign On Request to Server
+		synchronized(in) {
 		try{
 			out.writeObject(msg);
 		} catch (IOException e) {
@@ -103,10 +104,12 @@ public class Client extends Thread{
 			e.printStackTrace();
 		}
 	}
+	}
 
 	public void connect(){
 		Message msg = Message.connect();
 		// Send Connection Request
+		synchronized(in) {
 		try{
 			out.writeObject(msg);
 		} catch (Exception e) {
@@ -122,6 +125,7 @@ public class Client extends Thread{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
 	}
 
 	/**
@@ -144,7 +148,8 @@ public class Client extends Thread{
 	// 0 = Accept
 	// 1 = Reject
 	public boolean validate(ServerMessage msg){
-		if(msg.messageType == 0){
+		if(msg.messageType == 0 || msg.messageType == 6 || msg.messageType == 7){
+			
 			return true;
 		}
 		else if(msg.messageType == 1){
