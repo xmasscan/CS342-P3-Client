@@ -21,7 +21,9 @@ public class Client extends Thread{
 	boolean loggedIn = false;
 	// Is user connected to a game?
 	boolean connected = false;
-	
+	// Is user in a live match?
+	int matched = -1;
+
 	public void run() {
 		
 		try {
@@ -77,7 +79,6 @@ public class Client extends Thread{
 	public void startGame(){
 			// Wait for response
 			boolean game = false;
-			while(game) {
 			try{
 				ServerMessage response = (ServerMessage) in.readObject();
 				
@@ -89,7 +90,6 @@ public class Client extends Thread{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
 	}
 
 	public ServerMessage retrieveResponse(){
@@ -139,9 +139,23 @@ public class Client extends Thread{
 			ServerMessage response = (ServerMessage) in.readObject();
 			if(validate(response)){
 				this.connected = true;
-
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void beginMatch(){
+		try{
+			ServerMessage response = (ServerMessage) in.readObject();
+			if(response.messageType == 6){
+				matched = 0;
+			}
+			else if(response.messageType == 1){
+				matched = 1;
+			}
+		}
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -174,7 +188,7 @@ public class Client extends Thread{
 			return false;
 		}
 		else{
-			throw new RuntimeException("Invalid Message!");
+			throw new RuntimeException("Invalid Message! Message type is: " + msg.messageType);
 		}
 	}
 

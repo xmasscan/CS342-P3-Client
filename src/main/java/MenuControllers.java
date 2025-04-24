@@ -4,12 +4,16 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 
 public class MenuControllers {
     @FXML private Button signOut;
     @FXML private Button startGame;
+    @FXML private VBox full;
+    @FXML private Text waits;
 
     @FXML private Button Ai;
     @FXML private Button Player;
@@ -39,14 +43,37 @@ public class MenuControllers {
         clientThread.connect();
 
         // If Login was successful, change screens
+        if(clientThread.connected) {
+            /*try {
+                // Local Board Screen
+                Parent root = FXMLLoader.load(getClass().getResource("Waiting.fxml"));
+                GuiClient.setScene(root);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }*/
+        }
+
+        full.getChildren().get(0).setVisible(false);
+        waits.setText("Waiting");
+        waiting();
+    }
+
+    @FXML protected void waiting(){
+        
+
+        clientThread.startGame();
+
+        
         try {
-            // Local Board Screen
-            Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
-            GuiClient.setScene(root);
+           GuiClient.setScene(FXMLLoader.load(getClass().getResource("Game.fxml")));
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
+
+    
+    
 
     @FXML protected void signOut(){
         GuiClient.signout();

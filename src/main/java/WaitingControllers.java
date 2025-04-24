@@ -1,29 +1,25 @@
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
+import javafx.beans.Observable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.text.Text;
 
 
-public class WaitingControllers implements Initializable {
+public class WaitingControllers{
 
-    public void initialize(URL Location, ResourceBundle resources){
-    
-        Client clientThread = GuiClient.clientThread;
-        clientThread.startGame();
+    Client clientThread = GuiClient.clientThread;
+    String file = null;
 
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
-            GuiClient.setScene(root);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @FXML private Text WaitingText;
 
+    public void initialize(){
     }
-
-
     
 }
 
