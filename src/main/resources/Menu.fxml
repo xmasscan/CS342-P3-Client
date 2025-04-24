@@ -27,16 +27,15 @@
     <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" maxWidth = "380.0" minWidth = "380" maxHeight = "250.0" minHeight = "250.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;">
         <children>
         <!--<User/>-->
-        <Label text = "current User"/>
+        <Text fx:id = "currentUser" text = "currentUser: "></Text>
         <HBox>
-            <ImageView >
+            <ImageView fx:id = "image">
                 
             </ImageView>
             <VBox>
                 <children>
-                    <Label text = "Gold:"/>
-                    <Label text = "Elo"/>
-                    <Label text = "Win-Loss ratio"/>
+                    <Text fx:id = "Gold" text = "Gold: "></Text>
+                    <Text fx:id = "Elo" text = "Elo: "></Text>
                 </children>
             </VBox>
         </HBox>
@@ -47,13 +46,13 @@
     <!--this will need to change depending on the boder pane at 1, 1-->
     <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="0" maxWidth = "500.0" minWidth = "500" maxHeight = "250.0" minHeight = "250.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;">
         <center>
-            <Button text = "Start Game" onAction="#connect"/>
+            <Button fx:id = "startGame" onAction="#startGame" text = "Start Game"></Button>
         </center>
     </BorderPane>
 
     <BorderPane GridPane.columnIndex="0" GridPane.rowIndex="1" maxWidth = "380.0" minWidth = "380" maxHeight = "250.0" minHeight = "250.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;">
         <center>
-            <Button text = "Sign out"/>
+            <Button fx:id = "signOut" onAction="#startGame" text = "Sign out"></Button>
         </center>
     </BorderPane>
 
@@ -64,9 +63,9 @@
                 <padding><Insets  right="5" left="5"/></padding>
                 
                 
-                <Button text = "Play Against AI" maxWidth = "140" minWidth = "140" maxHeight = "200.0" minHeight = "200.0"/>
-                <Button text = "Play Against User" maxWidth = "140" minWidth = "140" maxHeight = "200.0" minHeight = "200.0"/>
-                <Button text = "Play Game" maxWidth = "140" minWidth = "140" maxHeight = "200.0" minHeight = "200.0"/>
+                <Button fx:id ="ai" text = "Play Against AI" maxWidth = "140" minWidth = "140" maxHeight = "200.0" minHeight = "200.0"></Button>
+                <Button fx:id = "Player" text = "Play Against User" maxWidth = "140" minWidth = "140" maxHeight = "200.0" minHeight = "200.0"></Button>
+                <Button fx:id = "Game" text = "Play Game" maxWidth = "140" minWidth = "140" maxHeight = "200.0" minHeight = "200.0"></Button>
                 
             </HBox>
         </center>
