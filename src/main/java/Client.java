@@ -18,6 +18,8 @@ public class Client extends Thread{
 	int moveOrder;
 	int lastPeice;
 
+	Boolean[][] board;
+
 	// Is user logged into the server?
 	boolean loggedIn = false;
 	// Is user connected to a game?
@@ -27,6 +29,13 @@ public class Client extends Thread{
 
 	public void run() {
 		
+		board = new Boolean[6][7];
+		for (int i = 0; i < 6;i++) {
+			for (int j = 0; j < 7; j++) {
+				board[i][j] = false;
+			}
+		}
+
 		try {
 			socketClient= new Socket("127.0.0.1",5555);
 	    	out = new ObjectOutputStream(socketClient.getOutputStream());
@@ -85,8 +94,11 @@ public class Client extends Thread{
 
 	//returns true if the collumn is not full
 	public Boolean checkValidMove(int collumn){
-
-		return true;
+		Boolean and=new Boolean(true);
+		for (int i = 0; i < 7; i++){
+			and= and && board[collumn][i];
+		}
+		return new Boolean(!and);
 	}
 
 	public void makeMove(int collumn) {
@@ -99,13 +111,19 @@ public class Client extends Thread{
 
 		try{
 			ServerMessage response = (ServerMessage) in.readObject();
-			if(validate(response)){
+			
 				moveOrder = 1;
 				//add the thing to the game
 
 				//gives the position of the peice from top where the top = 0 and bottom = 6
-				lastPeice = 5;
-			}
+				int indexOfMoved;
+				for (int i = 6; i >= 0; i++){
+					if (!board[collumn][i]) {
+						board[collumn][i] = true;
+						indexOfMoved=i;
+						break;
+					}
+				}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
