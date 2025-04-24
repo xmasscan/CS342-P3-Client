@@ -39,12 +39,14 @@ public class MenuControllers {
         clientThread.connect();
 
         // If Login was successful, change screens
-        try {
-            // Local Board Screen
-            Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
-            GuiClient.setScene(root);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(clientThread.connected) {
+            try {
+                // Local Board Screen
+                Parent root = FXMLLoader.load(getClass().getResource("Waiting.fxml"));
+                GuiClient.setScene(root);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
