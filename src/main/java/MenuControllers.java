@@ -45,29 +45,17 @@ public class MenuControllers {
     @FXML protected void startsGame(){
 
         HBox current = new HBox();
-            current.setMaxHeight(1500.5);
-            current.setMinHeight(1500.5);
-            full.addRow(0, current);
-        
+        current.setMaxHeight(1500.5);
+        current.setMinHeight(1500.5);
+        full.addRow(0, current);
 
-            waits.setText("Waiting");
-            waits.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 2000));
-
-
+        waits.setText("Waiting");
+        waits.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 2000));
 
         // Attempt to sign in to the server!
-
         clientThread.connect();
-
         // If Login was successful, change screens
         if(clientThread.connected) {
-            
-
-            System.out.println("hi");
-            for (int i = 0; i< 5000; i++) {
-                i++;
-            }
-            System.out.println("hi");
             waiting();
         }
         
@@ -76,12 +64,7 @@ public class MenuControllers {
     }
 
     @FXML protected void waiting(){
-        
-        
-
         clientThread.startGame();
-
-        
         try {
            GuiClient.setScene(FXMLLoader.load(getClass().getResource("Game.fxml")));
         } catch (Exception e) {

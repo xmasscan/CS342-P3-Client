@@ -105,9 +105,9 @@
       <!-- fill with text of the stuff-->
        <center>
          <VBox spacing = "5" maxWidth = "250.0" minWidth = "250.0" maxHeight = "700.0" minHeight = "700.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;">
-            <Label>
-               <Text text="Connect4 Online"/>
-            </Label>
+           <ScrollPane>
+              <Text text="test...."/>
+           </ScrollPane>
          </VBox>
        </center>
        <bottom>
