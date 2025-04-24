@@ -15,6 +15,8 @@ public class Client extends Thread{
 	ObjectOutputStream out;
 	ObjectInputStream in;
 
+	int moveOrder;
+
 	// Is user logged into the server?
 	boolean loggedIn = false;
 	// Is user connected to a game?
@@ -42,7 +44,6 @@ public class Client extends Thread{
 					} else if (message.messageType == 4) {
 
 					} else if (message.messageType == 6) {
-						WaitingControllers.startGame();
 					}
 					else if (message.messageType == 7) {
 						
@@ -68,6 +69,24 @@ public class Client extends Thread{
 		} catch (IOException e) {
 			System.err.println("Fatal Error:" + e);
 			e.printStackTrace();
+		}
+	}
+
+	public void startGame(){
+			// Wait for response
+			boolean game = false;
+			while(game) {
+			try{
+				ServerMessage response = (ServerMessage) in.readObject();
+				
+					if (response.messageType == 6) {
+						moveOrder = Integer.parseInt(response.argv.get(0));
+						game = false;
+					}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

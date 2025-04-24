@@ -1,24 +1,28 @@
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 
 
-public class WaitingControllers {
+public class WaitingControllers implements Initializable {
     
-    static public void startGame () { 
-        runGame();
-    }
+    public void initialize(URL Location, ResourceBundle resources){
+    
+        Client clientThread = GuiClient.clientThread;
+        clientThread.startGame();
 
-    static Class hello;
-
-    static public void runGame() {
         try {
-            Parent root = FXMLLoader.load(hello.getResource("Game.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
             GuiClient.setScene(root);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
+
 
     
 }
