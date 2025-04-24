@@ -94,8 +94,6 @@ public class ServerMessage implements Serializable {
         else{
             argv.add("Loser");
         }
-        return new ServerMessage(messageType, argv);
-    }
 
     public static ServerMessage updateInformation(String username, Integer gold, Integer elo, Integer visual) {
         int messageType = 3;
