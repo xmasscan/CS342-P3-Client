@@ -40,7 +40,6 @@ public class MenuControllers {
         // If Login was successful, change screens
         
             try {
-                // TODO: create & change to "waiting.fxml" if you want to impl this
                 // we locally update board anyways tho so we dont need this
                 Parent root = FXMLLoader.load(getClass().getResource("Waiting.fxml"));
                 GuiClient.setScene(root);

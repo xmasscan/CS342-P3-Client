@@ -1,3 +1,6 @@
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
