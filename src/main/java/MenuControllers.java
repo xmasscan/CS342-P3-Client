@@ -27,8 +27,7 @@ public class MenuControllers {
     @FXML static private Text Gold;
     @FXML static private Text Elo;
     @FXML static private ImageView image;
-
-    Integer typeOfGame;
+    @FXML private Text statusText;
 
     Client clientThread = GuiClient.clientThread;
 
@@ -44,21 +43,15 @@ public class MenuControllers {
 
     @FXML protected void startGame(){
 
-        HBox current = new HBox();
-        current.setMaxHeight(1500.5);
-        current.setMinHeight(1500.5);
-        full.addRow(0, current);
-
-        waits.setText("Waiting");
-        waits.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 2000));
-
+        // Update Status to reflect attempt
+        statusText.setText("Attempting Connection...");
         // Attempt to sign in to the server!
         clientThread.connect();
+        if(clientThread.connected){
+            statusText.setText("Connected to Server!\nAwaiting other player...");
+        }
         // If Login was successful, change screens
-            waiting();
-        
-        
-        
+        waiting();
     }
 
     @FXML protected void waiting(){
@@ -72,7 +65,6 @@ public class MenuControllers {
     }
 
     @FXML protected void signOut(){
-        GuiClient.signout();
         try {
             // TODO: implement actual sign out
             Parent root = FXMLLoader.load(getClass().getResource("GuiClient.fxml"));
