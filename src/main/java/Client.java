@@ -36,9 +36,11 @@ public class Client extends Thread{
 		}
 
 		while(true) {
+			// If the user logged in, begin waiting for messages.
 			if (loggedIn) {
 				try {
 					ServerMessage message = (ServerMessage) in.readObject();
+					// updateInformation handler
 					if (message.messageType == 5) {
 						MenuControllers.updateInformation(message);
 					} else if (message.messageType == 4) {

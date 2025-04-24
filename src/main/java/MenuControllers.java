@@ -24,7 +24,8 @@ public class MenuControllers {
 
     Client clientThread = GuiClient.clientThread;
 
-
+    // When this is implemented later, we should have a way to store this in the client thread and pull info from here
+    // clientThread should handle current info of current player, GUI should read from it with getters
     @FXML static public void updateInformation(ServerMessage msg){
         currentUser.setText("Current User: " + msg.argv.get(0));
         Gold.setText("Gold: " + msg.argv.get(1));
