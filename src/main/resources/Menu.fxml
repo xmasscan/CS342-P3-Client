@@ -31,7 +31,6 @@
         <!--<User/>-->
         <Text fx:id = "currentUser" text = "currentUser: "></Text>
         <HBox>
-            <ImageView fx:id = "image">
                 
             </ImageView>
             <VBox>
