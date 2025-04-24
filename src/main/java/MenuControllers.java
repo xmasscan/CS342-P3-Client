@@ -42,7 +42,7 @@ public class MenuControllers {
         image.setImage(temp);
     }
 
-    @FXML protected void startsGame(){
+    @FXML protected void startGame(){
 
         HBox current = new HBox();
         current.setMaxHeight(1500.5);
