@@ -33,7 +33,11 @@ public class Client extends Thread{
 		while(true) {
 			if (loggedIn) {
 				try {
-					MessageServer message = (MessageServer) in.readObject();
+					ServerMessage message = (ServerMessage) in.readObject();
+					if (message.messageType == 5) {
+						
+					}
+					
 					System.out.println(message);
 				} catch (Exception e) {
 					e.printStackTrace();
