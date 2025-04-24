@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 
 
 public class WaitingControllers implements Initializable {
-    
+
     public void initialize(URL Location, ResourceBundle resources){
     
         Client clientThread = GuiClient.clientThread;
