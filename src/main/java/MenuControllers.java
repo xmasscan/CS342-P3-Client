@@ -7,6 +7,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 
@@ -40,18 +43,31 @@ public class MenuControllers {
     }
 
     @FXML protected void startsGame(){
-        // Attempt to sign in to the server!
-        clientThread.connect();
 
-        // If Login was successful, change screens
-        if(clientThread.connected) {
-            HBox current = new HBox();
+        HBox current = new HBox();
             current.setMaxHeight(1500.5);
             current.setMinHeight(1500.5);
             full.addRow(0, current);
         
 
             waits.setText("Waiting");
+            waits.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 2000));
+
+
+
+        // Attempt to sign in to the server!
+
+        clientThread.connect();
+
+        // If Login was successful, change screens
+        if(clientThread.connected) {
+            
+
+            System.out.println("hi");
+            for (int i = 0; i< 5000; i++) {
+                i++;
+            }
+            System.out.println("hi");
             waiting();
         }
         
