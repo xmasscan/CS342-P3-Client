@@ -17,6 +17,9 @@ public class ServerMessage implements Serializable {
      *  1 = reject
      *  2 = update board state
      *  3 = update chat
+     *  4 - end Game
+     *  5 - update Information
+     *  6 - in Match
      * @param argv
      */
     ServerMessage(int messageType, ArrayList<String> argv) {
@@ -33,22 +36,6 @@ public class ServerMessage implements Serializable {
         int messageType = 0;
         ArrayList<String> argv = new ArrayList<>();
         argv.add("OK");
-        return new ServerMessage(messageType, argv);
-    }
-
-    public static ServerMessage acceptSignIn(){
-        int messageType = 7;
-        ArrayList<String> argv = new ArrayList<>();
-        argv.add("OK");
-        return new ServerMessage(messageType, argv);
-    }
-
-    //if oroder = 0  the player receiving goes first
-    public static ServerMessage inMatch(String otherUser, int order){
-        int messageType = 6;
-        ArrayList<String> argv = new ArrayList<String>();
-        argv.add(otherUser);
-        argv.add("" + order);
         return new ServerMessage(messageType, argv);
     }
 
@@ -123,6 +110,15 @@ public class ServerMessage implements Serializable {
         argv.add(gold.toString());
         argv.add(elo.toString());
         argv.add(visual.toString());
+        return new ServerMessage(messageType, argv);
+    }
+
+    //if order = 0  the player receiving goes first
+    public static ServerMessage inMatch(String otherUser, int order){
+        int messageType = 6;
+        ArrayList<String> argv = new ArrayList<String>();
+        argv.add(otherUser);
+        argv.add("" + order);
         return new ServerMessage(messageType, argv);
     }
 }
