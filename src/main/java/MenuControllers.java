@@ -55,9 +55,7 @@ public class MenuControllers {
         // Attempt to sign in to the server!
         clientThread.connect();
         // If Login was successful, change screens
-        if(clientThread.connected) {
             waiting();
-        }
         
         
         
