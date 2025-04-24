@@ -36,6 +36,22 @@ public class ServerMessage implements Serializable {
         return new ServerMessage(messageType, argv);
     }
 
+    public static ServerMessage acceptSignIn(){
+        int messageType = 7;
+        ArrayList<String> argv = new ArrayList<>();
+        argv.add("OK");
+        return new ServerMessage(messageType, argv);
+    }
+
+    //if oroder = 0  the player receiving goes first
+    public static ServerMessage inMatch(String otherUser, int order){
+        int messageType = 6;
+        ArrayList<String> argv = new ArrayList<String>();
+        argv.add(otherUser);
+        argv.add("" + order);
+        return new ServerMessage(messageType, argv);
+    }
+
     /**
      * Reject Message
      * @return

@@ -15,7 +15,6 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <Text GridPane.rowIndex="0">Waiting!</Text>
-    <Button GridPane.rowIndex="1" text="DEBUG - CONTINUE" onAction="#startGame"/>
 
 
 </GridPane>

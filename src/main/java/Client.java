@@ -38,6 +38,13 @@ public class Client extends Thread{
 				try {
 					ServerMessage message = (ServerMessage) in.readObject();
 					if (message.messageType == 5) {
+						MenuControllers.updateInformation(message);
+					} else if (message.messageType == 4) {
+
+					} else if (message.messageType == 6) {
+						WaitingControllers.startGame();
+					}
+					else if (message.messageType == 7) {
 						
 					}
 					

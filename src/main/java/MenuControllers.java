@@ -15,17 +15,17 @@ public class MenuControllers {
     @FXML private Button Player;
     @FXML private Button Game;
 
-    @FXML private Text currentUser;
-    @FXML private Text Gold;
-    @FXML private Text Elo;
-    @FXML private ImageView image;
+    @FXML static private Text currentUser;
+    @FXML static private Text Gold;
+    @FXML static private Text Elo;
+    @FXML static private ImageView image;
 
     Integer typeOfGame;
 
     Client clientThread = GuiClient.clientThread;
 
 
-    @FXML protected void updateInformation(ServerMessage msg){
+    @FXML static public void updateInformation(ServerMessage msg){
         currentUser.setText("Current User: " + msg.argv.get(0));
         Gold.setText("Gold: " + msg.argv.get(1));
         Elo.setText("Elo: " + msg.argv.get(2));
@@ -33,7 +33,7 @@ public class MenuControllers {
         image.setImage(temp);
     }
 
-    @FXML protected void startGame(){
+    @FXML protected void startsGame(){
         // Attempt to sign in to the server!
         clientThread.connect();
 
