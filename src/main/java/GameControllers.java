@@ -15,16 +15,16 @@ import javafx.scene.shape.Circle;
 
 
 public class GameControllers {
-    @FXML static private VBox first;
-    @FXML static private VBox second;
-    @FXML static private VBox third;
-    @FXML static private VBox fourth;
-    @FXML static private VBox fifth;
-    @FXML static private VBox sixth;
+    @FXML static private Button first;
+    @FXML static private Button second;
+    @FXML static private Button third;
+    @FXML static private Button fourth;
+    @FXML static private Button fifth;
+    @FXML static private Button sixth;
 
     static Client clientThread = GuiClient.clientThread;
 
-    @FXML static public void firstMove(){
+    @FXML static public void firstMove(ActionEvent jo){
         if (clientThread.isMyTurn() && clientThread.checkValidMove(1)) {
             clientThread.makeMove(1);
             Circle peice = new Circle(42.0);
@@ -39,7 +39,8 @@ public class GameControllers {
         }
     }
 
-    @FXML static public void secondMove(){
+    @FXML static public void secondMove(ActionEvent jo){
+        System.out.println("no");
         if (clientThread.isMyTurn() && clientThread.checkValidMove(2)) {
             clientThread.makeMove(2);
             Circle peice = new Circle(42.0);
@@ -54,7 +55,7 @@ public class GameControllers {
         }
     }
 
-    @FXML static public void thirdMove(){
+    @FXML static public void thirdMove(ActionEvent jo){
         if (clientThread.isMyTurn() && clientThread.checkValidMove(3)) {
             clientThread.makeMove(3);
             Circle peice = new Circle(42.0);
@@ -70,7 +71,7 @@ public class GameControllers {
     }
 
 
-    @FXML static public void fourthMove(){
+    @FXML static public void fourthMove(ActionEvent jo){
         if (clientThread.isMyTurn() && clientThread.checkValidMove(4)) {
             clientThread.makeMove(4);
             Circle peice = new Circle(42.0);
@@ -85,7 +86,7 @@ public class GameControllers {
         }
     }
 
-    @FXML static public void fifthMove(){
+    @FXML static public void fifthMove(ActionEvent jo){
         if (clientThread.isMyTurn() && clientThread.checkValidMove(5)) {
             clientThread.makeMove(5);
             Circle peice = new Circle(42.0);
@@ -100,7 +101,7 @@ public class GameControllers {
         }
     }
 
-    @FXML static public void sixthMove(){
+    @FXML static public void sixthMove(ActionEvent jo){
         if (clientThread.isMyTurn() && clientThread.checkValidMove(6)) {
             clientThread.makeMove(6);
             Circle peice = new Circle(42.0);
