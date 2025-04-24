@@ -19,26 +19,6 @@ public class WaitingControllers{
     @FXML private Text WaitingText;
 
     public void initialize(){
-        System.out.println("WaitingControllers.initialize");
-        while(clientThread.matched == -1)
-            clientThread.beginMatch();
-        System.out.println(clientThread.matched);
-        if(clientThread.matched == 0){
-            try {
-                GuiClient.setScene(FXMLLoader.load(getClass().getResource("Game.fxml")));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
-        else if(clientThread.matched == 1){
-            try {
-                GuiClient.setScene(FXMLLoader.load(getClass().getResource("GuiClient.fxml")));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
     }
     
 }

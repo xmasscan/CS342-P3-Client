@@ -79,7 +79,6 @@ public class Client extends Thread{
 	public void startGame(){
 			// Wait for response
 			boolean game = false;
-			while(game) {
 			try{
 				ServerMessage response = (ServerMessage) in.readObject();
 				
@@ -91,7 +90,6 @@ public class Client extends Thread{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
 	}
 
 	public ServerMessage retrieveResponse(){
