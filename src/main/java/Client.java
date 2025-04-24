@@ -39,8 +39,8 @@ public class Client extends Thread{
 		}
 
 		while(true) {
-			// If the user logged in, begin waiting for messages.
-			if (loggedIn) {
+			// If the user logged in & connected to a match, begin waiting for messages.
+			if (loggedIn && connected) {
 				try {
 					ServerMessage message = (ServerMessage) in.readObject();
 					// updateInformation handler
@@ -48,9 +48,19 @@ public class Client extends Thread{
 						MenuControllers.updateInformation(message);
 					} else if (message.messageType == 4) {
 
-					} else if (message.messageType == 6) {
 					}
-					else if (message.messageType == 7) {
+					// inMatch handling
+					else if (message.messageType == 6) {
+						if(matched == -1) {
+							if (message.argv.get(0).compareTo("0") == 0) {
+								matched = 0;
+							} else if (message.argv.get(0).compareTo("1") == 0) {
+								matched = 1;
+							}
+						}
+					}
+					else if (message.messageType == 7)
+					{
 						
 					}
 					
@@ -124,15 +134,13 @@ public class Client extends Thread{
 
 	public void startGame(){
 			// Wait for response
-			boolean game = false;
 			try{
 				ServerMessage response = (ServerMessage) in.readObject();
-				
-					if (response.messageType == 6) {
-						moveOrder = Integer.parseInt(response.argv.get(0));
-						game = false;
-					}
-				
+
+				if (response.messageType == 6) {
+
+				}
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
