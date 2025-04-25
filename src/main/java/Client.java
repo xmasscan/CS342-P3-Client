@@ -49,10 +49,13 @@ public class Client extends Thread{
 
 		while(true) {
 			// If the user logged in & connected to a match, begin waiting for messages.
-			if (loggedIn && connected) {
+			if (loggedIn) {
 				try {
 					ServerMessage message = (ServerMessage) in.readObject();
 					// updateInformation handler
+					if (message.messageType == 2) {
+						GameControllers.updateColumn(Integer.parseInt(message.argv.get(0)));
+					}
 					if (message.messageType == 5) {
 						MenuControllers.updateInformation(message);
 					} else if (message.messageType == 4) {
@@ -116,14 +119,15 @@ public class Client extends Thread{
 				//add the thing to the game
 
 				//gives the position of the peice from top where the top = 0 and bottom = 6
-				int indexOfMoved;
-				for (int i = 6; i >= 0; i++){
+				int indexOfMoved = 0;
+				for (int i = 6; i >= 0; i--){
 					if (!board[collumn][i]) {
 						board[collumn][i] = true;
 						indexOfMoved=i;
 						break;
 					}
 				}
+				lastPeice = indexOfMoved;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -154,6 +158,8 @@ public class Client extends Thread{
 			// Wait for response
 			try{
 				ServerMessage response = (ServerMessage) in.readObject();
+				moveOrder = Integer.parseInt(response.argv.get(0));
+
 
 				if (response.messageType == 6) {
 

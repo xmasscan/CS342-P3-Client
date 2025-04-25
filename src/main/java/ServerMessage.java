@@ -20,6 +20,7 @@ public class ServerMessage implements Serializable {
      *  4 - end Game
      *  5 - update Information
      *  6 - in Match
+     *  7 - does move
      * @param argv
      */
     ServerMessage(int messageType, ArrayList<String> argv) {
@@ -38,6 +39,15 @@ public class ServerMessage implements Serializable {
         argv.add("OK");
         return new ServerMessage(messageType, argv);
     }
+
+
+    public static ServerMessage move(Integer collumn){
+        int messageType =7;
+        ArrayList<String> argv = new ArrayList<String>();
+        argv.add(collumn.toString());
+        return new ServerMessage(messageType, argv);
+    }
+    
 
     /**
      * Reject Message
