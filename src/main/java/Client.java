@@ -26,6 +26,14 @@ public class Client extends Thread{
 	boolean connected = false;
 	// Is user in a live match?
 	int matched = -1;
+	int wait = 0;
+
+	Consumer<ServerMessage> msgCleint;
+
+	Client(Consumer<ServerMessage> call){
+	
+		msgCleint = call;
+	}
 
 	public void run() {
 		
@@ -49,12 +57,17 @@ public class Client extends Thread{
 
 		while(true) {
 			// If the user logged in & connected to a match, begin waiting for messages.
-			if (loggedIn) {
-				try {
+			
+			try {
+					System.out.println("hello");
 					ServerMessage message = (ServerMessage) in.readObject();
 					// updateInformation handler
+					msgCleint.accept(message);
+					
 					if (message.messageType == 2) {
-						GameControllers.updateColumn(Integer.parseInt(message.argv.get(0)));
+						int collumn = Integer.parseInt(message.argv.get(0));
+						moveOrder = 0;
+						
 					}
 					if (message.messageType == 5) {
 						MenuControllers.updateInformation(message);
@@ -63,13 +76,8 @@ public class Client extends Thread{
 					}
 					// inMatch handling
 					else if (message.messageType == 6) {
-						if(matched == -1) {
-							if (message.argv.get(0).compareTo("0") == 0) {
-								matched = 0;
-							} else if (message.argv.get(0).compareTo("1") == 0) {
-								matched = 1;
-							}
-						}
+						moveOrder = Integer.parseInt(message.argv.get(0));
+						this.connected = true;
 					}
 					else if (message.messageType == 7)
 					{
@@ -77,15 +85,31 @@ public class Client extends Thread{
 					}
 					
 					System.out.println(message);
+					System.out.println(message.messageType);
+					System.out.println(message.argv.get(0));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
+			
 		}
+	
 
     }
 
+	public void findSpace(int collumn){
+		int indexOfMoved = 0;
+			for (int i = 6; i >= 0; i--){
+				if (!board[collumn][i].booleanValue()) {
+					board[collumn][i] = true;
+					indexOfMoved=i;
+					lastPeice =indexOfMoved;
+					break;
+				}
 
+	}
+	System.out.println("prints for findSpcae: collumn " +""+collumn + " row " + "" + lastPeice);
+
+	}
 	/*functions to check that the move is find and everything works
 	 */
 	public Boolean isMyTurn(){
@@ -99,9 +123,9 @@ public class Client extends Thread{
 	public Boolean checkValidMove(int collumn){
 		Boolean and=new Boolean(true);
 		for (int i = 0; i < 7; i++){
-			and= and && board[collumn][i];
+			and = new Boolean(and.booleanValue() && board[collumn][i].booleanValue());
 		}
-		return new Boolean(!and);
+		return new Boolean(!and.booleanValue());
 	}
 
 	public void makeMove(int collumn) {
@@ -113,7 +137,6 @@ public class Client extends Thread{
 		}
 
 		try{
-			ServerMessage response = (ServerMessage) in.readObject();
 			
 				moveOrder = 1;
 				//add the thing to the game
@@ -121,7 +144,7 @@ public class Client extends Thread{
 				//gives the position of the peice from top where the top = 0 and bottom = 6
 				int indexOfMoved = 0;
 				for (int i = 6; i >= 0; i--){
-					if (!board[collumn][i]) {
+					if (!board[collumn][i].booleanValue()) {
 						board[collumn][i] = true;
 						indexOfMoved=i;
 						break;
@@ -159,6 +182,7 @@ public class Client extends Thread{
 			try{
 				ServerMessage response = (ServerMessage) in.readObject();
 				moveOrder = Integer.parseInt(response.argv.get(0));
+				this.connected = true;
 
 
 				if (response.messageType == 6) {
@@ -192,15 +216,6 @@ public class Client extends Thread{
 			e.printStackTrace();
 		}
 
-		// Wait for response
-		try{
-			ServerMessage response = (ServerMessage) in.readObject();
-			if(validate(response)){
-				this.loggedIn = true;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void connect(){
@@ -208,16 +223,6 @@ public class Client extends Thread{
 		// Send Connection Request
 		try{
 			out.writeObject(msg);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		// Wait for response
-		try{
-			ServerMessage response = (ServerMessage) in.readObject();
-			if(validate(response)){
-				this.connected = true;
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

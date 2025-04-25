@@ -41,7 +41,7 @@ public class GameControllers implements Initializable {
         // DEBUG PRINT
         // TODO: remove me!
         System.out.println("Row 1 Clicked!");
-        if (clientThread.isMyTurn() && clientThread.checkValidMove(1)) {
+        if (clientThread.isMyTurn() && clientThread.checkValidMove(0)) {
             clientThread.makeMove(0);
             Circle peice = new Circle(42.0);
             peice.setFill(Color.RED);
@@ -55,12 +55,12 @@ public class GameControllers implements Initializable {
     }
 
     @FXML public void secondMove(){
-        if (clientThread.isMyTurn() && clientThread.checkValidMove(2)) {
+        System.out.println("Row 2 Clicked!");
+        if (clientThread.isMyTurn() && clientThread.checkValidMove(1)) {
             clientThread.makeMove(1);
             Circle peice = new Circle(42.0);
             peice.setFill(Color.RED);
-
-            first.getChildren().set(clientThread.whichColor(), peice);
+            second.getChildren().set(clientThread.whichColor(), peice);
 
         } else if (!clientThread.isMyTurn()) {
 
@@ -70,12 +70,12 @@ public class GameControllers implements Initializable {
     }
 
     @FXML public void thirdMove(){
-        if (clientThread.isMyTurn() && clientThread.checkValidMove(3)) {
+        System.out.println("Row 3 Clicked!");
+        if (clientThread.isMyTurn() && clientThread.checkValidMove(2)) {
             clientThread.makeMove(2);
             Circle peice = new Circle(42.0);
             peice.setFill(Color.RED);
-
-            first.getChildren().set(clientThread.whichColor(), peice);
+            third.getChildren().set(clientThread.whichColor(), peice);
 
             } else if (!clientThread.isMyTurn()) {
 
@@ -87,12 +87,13 @@ public class GameControllers implements Initializable {
 
 
     @FXML public void fourthMove(){
-        if (clientThread.isMyTurn() && clientThread.checkValidMove(4)) {
+        System.out.println("Row 4 Clicked!");
+        if (clientThread.isMyTurn() && clientThread.checkValidMove(3)) {
             clientThread.makeMove(3);
             Circle peice = new Circle(42.0);
             peice.setFill(Color.RED);
 
-            first.getChildren().set(clientThread.whichColor(), peice);
+            fourth.getChildren().set(clientThread.whichColor(), peice);
 
         } else if (!clientThread.isMyTurn()) {
 
@@ -102,12 +103,13 @@ public class GameControllers implements Initializable {
     }
 
     @FXML public void fifthMove(){
-        if (clientThread.isMyTurn() && clientThread.checkValidMove(5)) {
+        System.out.println("Row 5 Clicked!");
+        if (clientThread.isMyTurn() && clientThread.checkValidMove(4)) {
             clientThread.makeMove(4);
             Circle peice = new Circle(42.0);
             peice.setFill(Color.RED);
 
-            first.getChildren().set(clientThread.whichColor(), peice);
+            fifth.getChildren().set(clientThread.whichColor(), peice);
 
         } else if (!clientThread.isMyTurn()) {
 
@@ -117,12 +119,13 @@ public class GameControllers implements Initializable {
     }
 
     @FXML public void sixthMove(){
-        if (clientThread.isMyTurn() && clientThread.checkValidMove(6)) {
+        System.out.println("Row 6 Clicked!");
+        if (clientThread.isMyTurn() && clientThread.checkValidMove(5)) {
             clientThread.makeMove(5);
             Circle peice = new Circle(42.0);
             peice.setFill(Color.RED);
 
-            first.getChildren().set(clientThread.whichColor(), peice);
+            sixth.getChildren().set(clientThread.whichColor(), peice);
 
         } else if (!clientThread.isMyTurn()) {
 
@@ -150,7 +153,7 @@ public class GameControllers implements Initializable {
         
 
             Circle peice = new Circle(42.0);
-            peice.setFill(Color.RED);
+            peice.setFill(Color.YELLOW);
             toChange.getChildren().set(clientThread.whichColor(), peice);
     }
 

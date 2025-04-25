@@ -21,11 +21,20 @@ public class ServerMessage implements Serializable {
      *  5 - update Information
      *  6 - in Match
      *  7 - does move
+     *  8 - login
+     *  9 - waiting()
      * @param argv
      */
     ServerMessage(int messageType, ArrayList<String> argv) {
         this.messageType = messageType;
         this.argv = argv;
+    }
+
+    public static ServerMessage waiting(){
+        int messageType = 9;
+        ArrayList<String> argv = new ArrayList<>();
+        argv.add("OK");
+        return new ServerMessage(messageType, argv); 
     }
 
     /**
@@ -35,6 +44,13 @@ public class ServerMessage implements Serializable {
      */
     public static ServerMessage accept(){
         int messageType = 0;
+        ArrayList<String> argv = new ArrayList<>();
+        argv.add("OK");
+        return new ServerMessage(messageType, argv);
+    }
+
+    public static ServerMessage Login(){
+        int messageType = 8;
         ArrayList<String> argv = new ArrayList<>();
         argv.add("OK");
         return new ServerMessage(messageType, argv);

@@ -33,14 +33,7 @@ public class LoginControllers {
         clientThread.signOn(user, pass);
 
         // If Login was successful, change screens
-        if(clientThread.loggedIn){
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-                GuiClient.setScene(root);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        
     }
 
     @FXML static public void startGame () { 

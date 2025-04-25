@@ -18,8 +18,6 @@ public class WaitingControllers{
 
     @FXML private Text WaitingText;
 
-    public void initialize(){
-    }
     
 }
 

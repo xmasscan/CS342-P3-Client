@@ -47,11 +47,6 @@ public class MenuControllers {
         statusText.setText("Attempting Connection...");
         // Attempt to sign in to the server!
         clientThread.connect();
-        if(clientThread.connected){
-            statusText.setText("Connected to Server!\nAwaiting other player...");
-        }
-        // If Login was successful, change screens
-        waiting();
     }
 
     @FXML protected void waiting(){
