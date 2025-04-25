@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.function.Consumer;
 
 
@@ -29,7 +30,12 @@ public class Client extends Thread{
 	int wait = 0;
 	boolean winner = false;
 
+	int numChats = 0;
+
 	Consumer<ServerMessage> msgClient;
+	ArrayList<String> chats = new ArrayList<String>();
+
+	ArrayList<String> users = new ArrayList<String>();
 
 	Client(Consumer<ServerMessage> call){
 	
@@ -84,9 +90,15 @@ public class Client extends Thread{
 						this.connected = true;
 						this.matched = true;
 					}
-					else if (message.messageType == 7)
+					else if (message.messageType == 3)
 					{
-						
+						synchronized(chats){
+						addChat(message);
+						}
+					} else if (message.messageType == 11) {
+						users = message.argv;
+					} else if (message.messageType == 12) {
+						users.add(message.argv.get(0));
 					}
 					
 					System.out.println(message);
@@ -100,6 +112,25 @@ public class Client extends Thread{
 	
 
     }
+
+	public ArrayList<String> getChats() {
+		return chats;
+	}
+
+	public int numChats(){
+		return numChats;
+	}
+
+	public void addChat(ServerMessage msg){
+		String chat = msg.argv.get(0);
+		if (numChats > 30) {
+			chats.remove(0);
+			numChats -=1;
+		}
+		chats.add(chat);
+		numChats+=1;
+
+	}
 
 	public void findSpace(int col){
 		int indexOfMoved = 0;
@@ -235,16 +266,24 @@ public class Client extends Thread{
 	 * @param data
 	 * 	The message to send in chat!
 	 */
-	public void send(String data) {
+	public void send(String user,String data) {
 
-		Message msg = Message.chat(data);
+		Message msg = Message.chat(user, data);
 		try {
 			out.writeObject(msg);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		if (numChats > 30) {
+			chats.remove(0);
+			numChats-=1;
+		}
+		chats.add(data);
+		numChats+=1;
 	}
+
 
 	// Server Message Standard:
 	// 0 = Accept

@@ -105,9 +105,36 @@
       <!-- fill with text of the stuff-->
        <center>
          <VBox spacing = "5" maxWidth = "250.0" minWidth = "250.0" maxHeight = "700.0" minHeight = "700.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;">
-           <ScrollPane>
-              <Text text="test...."/>
-           </ScrollPane>
+              <Text fx:id="t1test"/>
+              <Text fx:id="t2test"/>
+              <Text fx:id="t3test"/>
+              <Text fx:id="t4test"/>
+              <Text fx:id="t5test"/>
+              <Text fx:id="t6test"/>
+              <Text fx:id="t7test"/>
+              <Text fx:id="t8test"/>
+              <Text fx:id="t9test"/>
+              <Text fx:id="t10test"/>
+              <Text fx:id="t11test"/>
+              <Text fx:id="t12test"/>
+              <Text fx:id="t13test"/>
+              <Text fx:id="t14test"/>
+              <Text fx:id="t15test"/>
+              <Text fx:id="t16test"/>
+              <Text fx:id="t17test"/>
+              <Text fx:id="t18test"/>
+              <Text fx:id="t19test"/>
+              <Text fx:id="t20test"/>
+              <Text fx:id="t21test"/>
+              <Text fx:id="t22test"/>
+              <Text fx:id="t23test"/>
+              <Text fx:id="t24test"/>
+              <Text fx:id="t25test"/>
+              <Text fx:id="t26test"/>
+              <Text fx:id="t27test"/>
+              <Text fx:id="t28test"/>
+              <Text fx:id="t29test"/>
+              <Text fx:id="t30test"/>
          </VBox>
        </center>
        <bottom>

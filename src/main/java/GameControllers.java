@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 
 
 public class GameControllers implements Initializable {
@@ -27,7 +28,41 @@ public class GameControllers implements Initializable {
     @FXML  private VBox fifth;
     @FXML  private VBox sixth;
 
+    @FXML private Text t1test;
+    @FXML private Text t2test;
+    @FXML private Text t3test;
+    @FXML private Text t4test;
+    @FXML private Text t5test;
+    @FXML private Text t6test;
+    @FXML private Text t7test;
+    @FXML private Text t8test;
+    @FXML private Text t9test;
+    @FXML private Text t10test;
+    @FXML private Text t11test;
+    @FXML private Text t12test;
+    @FXML private Text t13test;
+    @FXML private Text t14test;
+    @FXML private Text t15test;
+    @FXML private Text t16test;
+    @FXML private Text t17test;
+    @FXML private Text t18test;
+    @FXML private Text t19test;
+    @FXML private Text t20test;
+    @FXML private Text t21test;
+    @FXML private Text t22test;
+    @FXML private Text t23test;
+    @FXML private Text t24test;
+    @FXML private Text t25test;
+    @FXML private Text t26test;
+    @FXML private Text t27test;
+    @FXML private Text t28test;
+    @FXML private Text t29test;
+    @FXML private Text t30test;
+
+    ArrayList<Text> messages = new ArrayList<Text>();
+
     static Client clientThread = GuiClient.clientThread;
+
 
 
     static GameControllers theGameControllers;
@@ -35,6 +70,37 @@ public class GameControllers implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         theGameControllers = this;
+        messages.add(t1test);
+        messages.add(t2test);
+        messages.add(t3test);
+        messages.add(t4test);
+        messages.add(t5test);
+        messages.add(t6test);
+        messages.add(t7test);
+        messages.add(t8test);
+        messages.add(t9test);
+        messages.add(t10test);
+        messages.add(t11test);
+        messages.add(t12test);
+        messages.add(t13test);
+        messages.add(t14test);
+        messages.add(t15test);
+        messages.add(t16test);
+        messages.add(t17test);
+        messages.add(t18test);
+        messages.add(t19test);
+        messages.add(t20test);
+        messages.add(t21test);
+        messages.add(t22test);
+        messages.add(t23test);
+        messages.add(t24test);
+        messages.add(t25test);
+        messages.add(t26test);
+        messages.add(t27test);
+        messages.add(t28test);
+        messages.add(t29test);
+        messages.add(t30test);
+
     }
 
     @FXML public void firstMove(){
@@ -154,6 +220,16 @@ public class GameControllers implements Initializable {
         Circle piece = new Circle(42.0);
         piece.setFill(Color.YELLOW);
         toChange.getChildren().set(clientThread.whichColor(), piece);
+    }
+
+    public static void updateMessages(int numMessages, ArrayList<String> chats) {
+        for (int i = 0; i < numMessages; i++) {
+            theGameControllers.messages.get(i).setText(chats.get(i));
+        }
+        for (int i = numMessages; i < 30; i++){
+            theGameControllers.messages.get(i).setText("");
+        }
+        
     }
 
 }

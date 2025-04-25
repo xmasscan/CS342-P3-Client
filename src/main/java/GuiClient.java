@@ -73,6 +73,12 @@ public class GuiClient extends Application{
 							catch (Exception e){
 								e.printStackTrace();
 							}
+						case 3:
+							GameControllers.updateMessages(clientThread.numChats, clientThread.getChats());
+							break;
+						case 10:
+							GameControllers.updateMessages(clientThread.numChats, clientThread.getChats());
+							break;
 					}
 
 				});
