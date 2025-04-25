@@ -17,19 +17,15 @@ public class GuiClient extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
-
 
 			clientThread = new Client(data -> {
 				Platform.runLater( () -> {
-					ServerMessage known = (ServerMessage) data;
-					switch(known.messageType) {
+                    switch(((ServerMessage) data).messageType) {
 						case 8:
 							try {
-
 								Parent root2 = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-							Scene scene2 = new Scene(root2, 1024, 768);
-							primaryStage.setScene(scene2);
+								Scene scene2 = new Scene(root2, 1024, 768);
+								primaryStage.setScene(scene2);
 								
 							} catch (Exception e) {
 								// TODO: handle exception
@@ -37,7 +33,6 @@ public class GuiClient extends Application{
 							break;
 						case 9:
 							try {
-
 								Parent root3 = FXMLLoader.load(getClass().getResource("Waiting.fxml"));
 								Scene scene3 = new Scene(root3, 1024, 768);
 								primaryStage.setScene(scene3);
@@ -48,7 +43,6 @@ public class GuiClient extends Application{
 							break;
 						case 6:
 							try {
-
 								Parent root4 = FXMLLoader.load(getClass().getResource("Game.fxml"));
 								Scene scene4 = new Scene(root4, 1024, 768);
 								primaryStage.setScene(scene4);
@@ -59,11 +53,9 @@ public class GuiClient extends Application{
 							break;
 
 						case 2:
-							int collumn = Integer.parseInt(data.argv.get(0));
-							clientThread.findSpace(collumn);
-							GameControllers.updateColumn(collumn);
-							
-						
+							int column = Integer.parseInt(data.argv.get(0));
+							clientThread.findSpace(column);
+							GameControllers.updateColumn(column);
 					}
 
 				});

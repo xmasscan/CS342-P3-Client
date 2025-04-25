@@ -16,7 +16,7 @@ public class Client extends Thread{
 	ObjectInputStream in;
 
 	int moveOrder;
-	int lastPeice;
+	int lastPiece;
 
 	Boolean[][] board;
 
@@ -28,11 +28,11 @@ public class Client extends Thread{
 	int matched = -1;
 	int wait = 0;
 
-	Consumer<ServerMessage> msgCleint;
+	Consumer<ServerMessage> msgClient;
 
 	Client(Consumer<ServerMessage> call){
 	
-		msgCleint = call;
+		msgClient = call;
 	}
 
 	public void run() {
@@ -59,19 +59,22 @@ public class Client extends Thread{
 			// If the user logged in & connected to a match, begin waiting for messages.
 			
 			try {
-					System.out.println("hello");
 					ServerMessage message = (ServerMessage) in.readObject();
 					// updateInformation handler
-					msgCleint.accept(message);
+					msgClient.accept(message);
 					
 					if (message.messageType == 2) {
-						int collumn = Integer.parseInt(message.argv.get(0));
+						int col = Integer.parseInt(message.argv.get(0));
 						moveOrder = 0;
-						
 					}
-					if (message.messageType == 5) {
+					// endGame Message Handling
+					else if(message.messageType == 4) {
+
+					}
+					else if (message.messageType == 5) {
 						MenuControllers.updateInformation(message);
-					} else if (message.messageType == 4) {
+					}
+					else if (message.messageType == 4) {
 
 					}
 					// inMatch handling
@@ -96,22 +99,21 @@ public class Client extends Thread{
 
     }
 
-	public void findSpace(int collumn){
+	public void findSpace(int col){
 		int indexOfMoved = 0;
-			for (int i = 6; i >= 0; i--){
-				if (!board[collumn][i].booleanValue()) {
-					board[collumn][i] = true;
-					indexOfMoved=i;
-					lastPeice =indexOfMoved;
-					break;
-				}
-
+		for (int i = 6; i >= 0; i--){
+			if (!board[col][i].booleanValue()) {
+				board[col][i] = true;
+				indexOfMoved=i;
+				lastPiece = indexOfMoved;
+				break;
+			}
+		}
+		System.out.println("prints for findSpace: col " + "" + col + " row " + "" + lastPiece);
 	}
-	System.out.println("prints for findSpcae: collumn " +""+collumn + " row " + "" + lastPeice);
 
-	}
-	/*functions to check that the move is find and everything works
-	 */
+	// TODO: More Descriptive Commenting
+	/* Functions to check that the move is find and everything works */
 	public Boolean isMyTurn(){
 		if (moveOrder == 0) {
 			return true;
@@ -119,38 +121,35 @@ public class Client extends Thread{
 		return false;
 	}
 
-	//returns true if the collumn is not full
-	public Boolean checkValidMove(int collumn){
-		Boolean and=new Boolean(true);
+	//returns true if the column i	s not full
+	public Boolean checkValidMove(int col){
+		Boolean and = new Boolean(true);
 		for (int i = 0; i < 7; i++){
-			and = new Boolean(and.booleanValue() && board[collumn][i].booleanValue());
+			and = new Boolean(and.booleanValue() && board[col][i].booleanValue());
 		}
 		return new Boolean(!and.booleanValue());
 	}
 
-	public void makeMove(int collumn) {
-		Message msg = Message.move(collumn);
+	public void makeMove(int col) {
+		Message msg = Message.move(col);
 		try {
 			out.writeObject(msg);
 		} catch (Exception e) {
-			System.out.print("womp womp");
+			e.printStackTrace();
 		}
-
 		try{
-			
-				moveOrder = 1;
-				//add the thing to the game
-
-				//gives the position of the peice from top where the top = 0 and bottom = 6
-				int indexOfMoved = 0;
-				for (int i = 6; i >= 0; i--){
-					if (!board[collumn][i].booleanValue()) {
-						board[collumn][i] = true;
-						indexOfMoved=i;
-						break;
-					}
+			moveOrder = 1;
+			//add the thing to the game
+			//gives the position of the piece from top where the top = 0 and bottom = 6
+			int indexOfMoved = 0;
+			for (int i = 6; i >= 0; i--){
+				if (!board[col][i].booleanValue()) {
+					board[col][i] = true;
+					indexOfMoved=i;
+					break;
 				}
-				lastPeice = indexOfMoved;
+			}
+			lastPiece = indexOfMoved;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -160,7 +159,7 @@ public class Client extends Thread{
 
 	//gives the position of the peice from top where the top = 0 and bottom = 6
 	public int whichColor() {
-		return lastPeice;
+		return lastPiece;
 	}
 
 	/**
