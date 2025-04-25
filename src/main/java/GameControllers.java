@@ -145,7 +145,7 @@ public class GameControllers implements Initializable {
             toChange = theGameControllers.third;
         } else if (col == 3){
             toChange = theGameControllers.fourth;
-        } else if (col==  4){
+        } else if (col == 4){
             toChange = theGameControllers.fifth;
         } else {
             toChange = theGameControllers.sixth;

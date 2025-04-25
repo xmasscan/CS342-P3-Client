@@ -68,10 +68,6 @@ public class Client extends Thread{
 						int col = Integer.parseInt(message.argv.get(0));
 						moveOrder = 0;
 					}
-					// endGame Message Handling
-					else if(message.messageType == 4) {
-
-					}
 					else if (message.messageType == 5) {
 						MenuControllers.updateInformation(message);
 					}
