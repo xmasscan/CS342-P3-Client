@@ -29,6 +29,7 @@ public class GuiClient extends Application{
 								
 							} catch (Exception e) {
 								// TODO: handle exception
+								e.printStackTrace();
 							}
 							break;
 						case 9:
@@ -39,6 +40,7 @@ public class GuiClient extends Application{
 								
 							} catch (Exception e) {
 								// TODO: handle exception
+								e.printStackTrace();
 							}
 							break;
 						case 6:
@@ -49,13 +51,28 @@ public class GuiClient extends Application{
 								
 							} catch (Exception e) {
 								// TODO: handle exception
+								e.printStackTrace();
 							}
 							break;
-
 						case 2:
 							int column = Integer.parseInt(data.argv.get(0));
 							clientThread.findSpace(column);
 							GameControllers.updateColumn(column);
+							break;
+						// Winner Message Handling
+						case 4:
+							String state = data.argv.get(0);
+							// If player is a winner, update the thread to reflect that
+							if(state.compareTo("Winner") == 0){
+								clientThread.winner = true;
+							}
+							// Inform the client that the game is complete
+							try {
+								primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Menu.fxml")), 1024, 768));
+							}
+							catch (Exception e){
+								e.printStackTrace();
+							}
 					}
 
 				});

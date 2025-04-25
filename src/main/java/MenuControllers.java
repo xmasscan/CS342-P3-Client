@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,6 +32,26 @@ public class MenuControllers {
 
     Client clientThread = GuiClient.clientThread;
 
+    public void initialize() {
+        // If this isn't changed, then the user has returned from a match!
+        System.out.println(clientThread.matched);
+        if(clientThread.matched){
+            // Update Status with win!
+            if(clientThread.winner){
+                Platform.runLater(()->{
+                    statusText.setText("You Won!");
+                });
+            }
+            // Update status with loss :(
+            else{
+                Platform.runLater(()->{
+                    statusText.setText("You Lost!");
+                });
+            }
+            clientThread.winner = false;
+        }
+    }
+
     // When this is implemented later, we should have a way to store this in the client thread and pull info from here
     // clientThread should handle current info of current player, GUI should read from it with getters
     @FXML static public void updateInformation(ServerMessage msg){
@@ -42,7 +63,6 @@ public class MenuControllers {
     }
 
     @FXML protected void startGame(){
-
         // Update Status to reflect attempt
         statusText.setText("Attempting Connection...");
         // Attempt to sign in to the server!

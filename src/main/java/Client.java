@@ -25,8 +25,9 @@ public class Client extends Thread{
 	// Is user connected to a game?
 	boolean connected = false;
 	// Is user in a live match?
-	int matched = -1;
+	boolean matched = false;
 	int wait = 0;
+	boolean winner = false;
 
 	Consumer<ServerMessage> msgClient;
 
@@ -81,6 +82,7 @@ public class Client extends Thread{
 					else if (message.messageType == 6) {
 						moveOrder = Integer.parseInt(message.argv.get(0));
 						this.connected = true;
+						this.matched = true;
 					}
 					else if (message.messageType == 7)
 					{
@@ -122,6 +124,7 @@ public class Client extends Thread{
 	}
 
 	//returns true if the column i	s not full
+	// TODO: Check if column is full
 	public Boolean checkValidMove(int col){
 		Boolean and = new Boolean(true);
 		for (int i = 0; i < 7; i++){
@@ -223,21 +226,6 @@ public class Client extends Thread{
 		try{
 			out.writeObject(msg);
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void beginMatch(){
-		try{
-			ServerMessage response = (ServerMessage) in.readObject();
-			if(response.messageType == 6){
-				matched = 0;
-			}
-			else if(response.messageType == 1){
-				matched = 1;
-			}
-		}
-		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
