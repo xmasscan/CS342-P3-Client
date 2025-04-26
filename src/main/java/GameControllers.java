@@ -1,41 +1,64 @@
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.spi.ResourceBundleControlProvider;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 
 
 public class GameControllers implements Initializable {
-    @FXML  private VBox first;
-    @FXML  private VBox second;
-    @FXML  private VBox third;
-    @FXML  private VBox fourth;
-    @FXML  private VBox fifth;
-    @FXML  private VBox sixth;
+    @FXML private VBox first;
+    @FXML private VBox second;
+    @FXML private VBox third;
+    @FXML private VBox fourth;
+    @FXML private VBox fifth;
+    @FXML private VBox sixth;
+    @FXML private ScrollPane chatbox;
+    @FXML private VBox chatContent;
+    @FXML private TextField messageTextField;
 
     static Client clientThread = GuiClient.clientThread;
 
-
     static GameControllers theGameControllers;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        theGameControllers = this;
+    /**
+     * updateChat
+     * When the client receives a chat message, update the GUI's chat box to accommodate!
+     * @param username
+     *  A String containing the username of the user who sent the message
+     * @param message
+     *  A string containing the user's message!
+     */
+    public static void updateChat(String username, String message) {
+        String toText = username + ": " + message;
+        System.out.println("Message received: " + toText);
+        // Update GUI
+        VBox chatContent = theGameControllers.chatContent;
+        if(chatContent != null) {
+            chatContent.getChildren().add(new Text(toText));
+        }
+        else{
+            System.out.println("Chat content is null");
+        }
     }
+
+    public void sendMessage(ActionEvent actionEvent) {
+        String message = messageTextField.getText();
+        System.out.println("Message sent: " + clientThread.username + ": " +  message);
+        clientThread.send(clientThread.username,message);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {theGameControllers = this;}
 
     @FXML public void firstMove(){
         // DEBUG PRINT
@@ -155,5 +178,4 @@ public class GameControllers implements Initializable {
         piece.setFill(Color.YELLOW);
         toChange.getChildren().set(clientThread.whichColor(), piece);
     }
-
 }

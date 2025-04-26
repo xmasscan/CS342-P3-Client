@@ -1,10 +1,6 @@
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.net.Socket;
 import java.util.function.Consumer;
 
@@ -20,6 +16,7 @@ public class Client extends Thread{
 
 	Boolean[][] board;
 
+	// User States
 	// Is user logged into the server?
 	boolean loggedIn = false;
 	// Is user connected to a game?
@@ -28,6 +25,9 @@ public class Client extends Thread{
 	boolean matched = false;
 	int wait = 0;
 	boolean winner = false;
+
+	// User Info
+	String username;
 
 	Consumer<ServerMessage> msgClient;
 
@@ -182,7 +182,7 @@ public class Client extends Thread{
 				moveOrder = Integer.parseInt(response.argv.get(0));
 				this.connected = true;
 
-
+				// TODO: determine if handling required
 				if (response.messageType == 6) {
 
 				}
@@ -213,7 +213,6 @@ public class Client extends Thread{
 			System.err.println("Fatal Error:" + e);
 			e.printStackTrace();
 		}
-
 	}
 
 	public void connect(){
@@ -227,13 +226,16 @@ public class Client extends Thread{
 	}
 
 	/**
-	 * Send a Chat Message to the Connect4 Server
-	 * @param data
-	 * 	The message to send in chat!
+	 * Send a Chat Message to the Server
+	 *
+	 * @param username
+	 * 	The name of the user who sent the message.
+	 * @param message
+	 * 	 The message to send in chat!
 	 */
-	public void send(String data) {
+	public void send(String username, String message) {
 
-		Message msg = Message.chat(data);
+		Message msg = Message.chat(username,message);
 		try {
 			out.writeObject(msg);
 		} catch (IOException e) {

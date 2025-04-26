@@ -117,14 +117,27 @@ public class Message implements Serializable {
      * @param message
      *  The chat message for the user to send to the server.
      */
-    public static Message chat(String message){
+    public static Message chat(String username, String message){
         // ID Message as a "Chat Message" message
         int messageType = 3;
 
         // Build arguments; Only need to send chat message!
         ArrayList<String> argv = new ArrayList<>();
+        argv.add(username);
         argv.add(message);
         // Create Message Object with desired contents
+        return new Message(messageType, argv);
+    }
+
+    public static Message chatAll(String username, String message){
+        // ID Message as Chat Message
+        int messageType = 3;
+
+        // Build Arguments
+        ArrayList<String> argv = new ArrayList<>();
+        argv.add(username);
+        argv.add(message);
+        argv.add("Global");
         return new Message(messageType, argv);
     }
 
