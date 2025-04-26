@@ -131,7 +131,7 @@ public class Message implements Serializable {
     }
 
 
-    public static Message acceptRematch(boolean hasAccepted, String player) {
+    public static Message acceptRematch(boolean hasAccepted) {
         int messageType = 5;
 
         // Build Arguments
@@ -142,7 +142,6 @@ public class Message implements Serializable {
         else{
             argv.add("false");
         }
-        argv.add(player);
         return new Message(messageType, argv);
     }
 

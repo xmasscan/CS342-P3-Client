@@ -72,7 +72,6 @@ public class Client extends Thread{
 						MenuControllers.updateInformation(message);
 					}
 					else if (message.messageType == 4) {
-						lastPlayer = message.argv.get(1);
 						clearBoard();
 					}
 					// inMatch handling

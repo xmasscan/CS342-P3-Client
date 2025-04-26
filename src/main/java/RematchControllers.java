@@ -14,18 +14,18 @@ public class RematchControllers {
 
     public void rematchYes() {
         try {
-            clientThread.out.writeObject(Message.acceptRematch(true, clientThread.lastPlayer));
+            clientThread.out.writeObject(Message.acceptRematch(true));
         } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
+            // TODO: Handle Disconnect
+           e.printStackTrace();
         }
     }
 
     public void rematchNo() {
         try {
-            clientThread.out.writeObject(Message.acceptRematch(false, clientThread.lastPlayer));
+            clientThread.out.writeObject(Message.acceptRematch(false));
         } catch (Exception e) {
-            // TODO: handle exception
+            // TODO: Handle Disconnect
             e.printStackTrace();
         }
     }

@@ -81,7 +81,7 @@ public class GuiClient extends Application{
 							clientThread.winner = 1;
 						} else if (state.compareTo("Loser") == 0){
 							clientThread.winner = 0;
-						} else {
+						} else if (state.compareTo("Draw") == 0) {
 							clientThread.winner = 2;
 						}
 						// Inform the client that the game is complete
