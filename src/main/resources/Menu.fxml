@@ -29,15 +29,13 @@
         <children>
         <!--<User/>-->
         <Text fx:id = "currentUser" text = "currentUser: "></Text>
-        <HBox>
-            
+        
                 
-            <VBox>
+            <VBox alignment = "CENTER">
                 <children>
                     <Text fx:id = "Elo" text = "Elo: "></Text>
                 </children>
             </VBox>
-        </HBox>
 
         </children>  
     </VBox>
@@ -54,7 +52,13 @@
 
     <BorderPane GridPane.columnIndex="0" GridPane.rowIndex="1" maxWidth = "380.0" minWidth = "380" maxHeight = "250.0" minHeight = "250.0" style = "-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3; -fx-border-style: dashed;">
         <center>
-            <Button fx:id = "signOut" onAction="#signOut" text = "Sign out"></Button>
+            <VBox alignment = "CENTER">
+                <Text text = "Connect 4 is an awesome Game to play with freinds!"></Text>
+                <Text text = "You play by clicking on a collumn to place a peice."></Text>
+                <Text text = "The first player to have 4 in a row in any direction wins."></Text>
+                <Text text = "Have Fun!"></Text>
+            </VBox>
+            
         </center>
     </BorderPane>
 
@@ -64,9 +68,6 @@
             <HBox alignment = "CENTER" spacing = "15">
                 <padding><Insets  right="5" left="5"/></padding>
                 
-                
-                <Button fx:id ="ai" text = "Play Against AI" maxWidth = "140" minWidth = "140" maxHeight = "200.0" minHeight = "200.0"></Button>
-                <Button fx:id = "Player" text = "Play Against User" maxWidth = "140" minWidth = "140" maxHeight = "200.0" minHeight = "200.0"></Button>
                 <Button fx:id="Game" onAction="#startGame" text = "Play Game" maxWidth = "140" minWidth = "140" maxHeight = "200.0" minHeight = "200.0"></Button>
                 
             </HBox>

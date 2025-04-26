@@ -15,13 +15,10 @@ import javafx.scene.text.Text;
 
 
 public class MenuControllers {
-    @FXML private Button signOut;
     @FXML private Button startGame;
     @FXML private GridPane full;
     @FXML private Text waits;
 
-    @FXML private Button Ai;
-    @FXML private Button Player;
     @FXML private Button Game;
 
     @FXML private Text currentUser;
@@ -34,6 +31,7 @@ public class MenuControllers {
 
     public void initialize() {
         theMenuControllers = this;
+        MenuControllers.updateInformation();
         // If this isn't changed, then the user has returned from a match!
         System.out.println(clientThread.matched);
         if(clientThread.matched){

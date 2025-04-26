@@ -26,7 +26,9 @@ public class GuiClient extends Application{
 							MenuControllers.updateInformation();
 						} catch (Exception e) {
 							e.printStackTrace();
+							
 						}
+						break;
 					case 8:
 						try {
 							LoginControllers.updateUsername(data.argv.get(0));
@@ -54,6 +56,7 @@ public class GuiClient extends Application{
 						break;
 					case 6:
 						try {
+							clientThread.clearBoard();
 							Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
 							Scene scene = new Scene(root, 1024, 768);
 							scene.getStylesheets().add("game.css");
