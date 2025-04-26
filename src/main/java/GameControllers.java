@@ -60,6 +60,7 @@ public class GameControllers implements Initializable {
         else {
             clientThread.send(clientThread.username, message);
         }
+        messageTextField.clear();
     }
 
     @Override
