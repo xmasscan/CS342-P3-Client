@@ -23,7 +23,11 @@ public class LoginControllers {
     @FXML private Button signOnButton;
 
     // So we don't have to write GuiClient.clientThread every time
-    Client clientThread = GuiClient.clientThread;
+    static Client clientThread = GuiClient.clientThread;
+
+    public static void updateUsername(String username){
+        clientThread.username = username;
+    }
 
     @FXML protected void attemptSignIn(ActionEvent event) {
         String user = usernameField.getText();
@@ -31,24 +35,6 @@ public class LoginControllers {
 
         // Attempt to sign in to the server!
         clientThread.signOn(user, pass);
-
-        // If Login was successful, change screens
-        
-    }
-
-    @FXML static public void startGame () { 
-        runGame();
-    }
-
-    static Class hello;
-
-    static public void runGame() {
-        try {
-            Parent root = FXMLLoader.load(hello.getResource("Game.fxml"));
-            GuiClient.setScene(root);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     

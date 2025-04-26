@@ -1,32 +1,29 @@
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.spi.ResourceBundleControlProvider;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
 
 public class GameControllers implements Initializable {
-    @FXML  private VBox first;
-    @FXML  private VBox second;
-    @FXML  private VBox third;
-    @FXML  private VBox fourth;
-    @FXML  private VBox fifth;
-    @FXML  private VBox sixth;
+    @FXML private VBox first;
+    @FXML private VBox second;
+    @FXML private VBox third;
+    @FXML private VBox fourth;
+    @FXML private VBox fifth;
+    @FXML private VBox sixth;
+    @FXML private VBox chatContent;
+    @FXML private TextField messageTextField;
 
     @FXML private Text t1test;
     @FXML private Text t2test;
@@ -64,44 +61,43 @@ public class GameControllers implements Initializable {
     static Client clientThread = GuiClient.clientThread;
 
 
-
     static GameControllers theGameControllers;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        theGameControllers = this;
-        messages.add(t1test);
-        messages.add(t2test);
-        messages.add(t3test);
-        messages.add(t4test);
-        messages.add(t5test);
-        messages.add(t6test);
-        messages.add(t7test);
-        messages.add(t8test);
-        messages.add(t9test);
-        messages.add(t10test);
-        messages.add(t11test);
-        messages.add(t12test);
-        messages.add(t13test);
-        messages.add(t14test);
-        messages.add(t15test);
-        messages.add(t16test);
-        messages.add(t17test);
-        messages.add(t18test);
-        messages.add(t19test);
-        messages.add(t20test);
-        messages.add(t21test);
-        messages.add(t22test);
-        messages.add(t23test);
-        messages.add(t24test);
-        messages.add(t25test);
-        messages.add(t26test);
-        messages.add(t27test);
-        messages.add(t28test);
-        messages.add(t29test);
-        messages.add(t30test);
+    /**
+     * updateChat
+     * When the client receives a chat message, update the GUI's chat box to accommodate!
+     * @param username
+     *  A String containing the username of the user who sent the message
+     * @param message
+     *  A string containing the user's message!
+     */
+    public static void updateChat(String username, String message) {
+        String toText = username + ": " + message;
+        System.out.println("Message received: " + toText);
+        // Update GUI
+        VBox chatContent = theGameControllers.chatContent;
+        if(chatContent != null) {
+            chatContent.getChildren().add(new Text(toText));
+        }
+        else{
+            System.out.println("Chat content is null");
+        }
 
     }
+
+    public void sendMessage(ActionEvent actionEvent) {
+        String message = messageTextField.getText();
+        System.out.println("Message sent: " + clientThread.username + ": " +  message);
+        if(message.startsWith("@everyone")) {
+            clientThread.sendAll(clientThread.username, message);
+        }
+        else {
+            clientThread.send(clientThread.username, message);
+        }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {theGameControllers = this;}
 
     @FXML public void firstMove(){
         // DEBUG PRINT
@@ -211,7 +207,7 @@ public class GameControllers implements Initializable {
             toChange = theGameControllers.third;
         } else if (col == 3){
             toChange = theGameControllers.fourth;
-        } else if (col==  4){
+        } else if (col == 4){
             toChange = theGameControllers.fifth;
         } else {
             toChange = theGameControllers.sixth;
@@ -222,14 +218,5 @@ public class GameControllers implements Initializable {
         toChange.getChildren().set(clientThread.whichColor(), piece);
     }
 
-    public static void updateMessages(int numMessages, ArrayList<String> chats) {
-        for (int i = 0; i < numMessages; i++) {
-            theGameControllers.messages.get(i).setText(chats.get(i));
-        }
-        for (int i = numMessages; i < 30; i++){
-            theGameControllers.messages.get(i).setText("");
-        }
-        
-    }
 
 }
