@@ -16,6 +16,8 @@ public class Client extends Thread{
 
 	Boolean[][] board;
 
+	String lastPlayer;
+
 	// User States
 	// Is user logged into the server?
 	boolean loggedIn = false;
@@ -72,7 +74,8 @@ public class Client extends Thread{
 						MenuControllers.updateInformation(message);
 					}
 					else if (message.messageType == 4) {
-
+						lastPlayer = message.argv.get(1);
+						clearBoard();
 					}
 					// inMatch handling
 					else if (message.messageType == 6) {
@@ -96,6 +99,15 @@ public class Client extends Thread{
 	
 
     }
+
+	public void clearBoard() {
+		board = new Boolean[6][7];
+		for (int i = 0; i < 6;i++) {
+			for (int j = 0; j < 7; j++) {
+				board[i][j] = false;
+			}
+		}
+	}
 
 	public void findSpace(int col){
 		int indexOfMoved = 0;

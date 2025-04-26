@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.geometry.Insets?>
+
+<GridPane fx:id="root" fx:controller="RematchController" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" maxHeight = "-Infinity" minHeight = "-Infinity" maxWidth = "-Infinity" minWidth = "-Infinity">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <VBox>
+        <Text fx:id = "write" text=": Would you like a rematch?" GridPane.rowIndex="0">Waiting!</Text>
+        <HBox>
+            <Button fx:id = "acceptRematch" onAction="#rematchYes">
+                Try Again.
+            </Button>
+            <Button fx:id = "rejectRematch" onAction="#rematchNo">
+                Return to main menu
+            </Button>
+        </HBox>
+
+    </VBox>
+    
+
+
+
+</GridPane>

@@ -20,6 +20,17 @@ public class GuiClient extends Application{
 		clientThread = new Client(data -> {
 			Platform.runLater( () -> {
 				switch(((ServerMessage) data).messageType) {
+					case 10:
+						try {
+							Parent root2 = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+							Scene scene2 = new Scene(root2, 1024, 768);
+							scene2.getStylesheets().add("menu.css");
+							primaryStage.setScene(scene2);
+							break;
+							
+						} catch (Exception e) {
+							// TODO: handle exception
+						}
 					case 8:
 						try {
 							LoginControllers.updateUsername(data.argv.get(0));
@@ -75,7 +86,7 @@ public class GuiClient extends Application{
 						}
 						// Inform the client that the game is complete
 						try {
-							primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Menu.fxml")), 1024, 768));
+							primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Rematch.fxml")), 1024, 768));
 						}
 						catch (Exception e){
 							e.printStackTrace();
