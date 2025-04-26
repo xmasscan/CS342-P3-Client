@@ -39,9 +39,9 @@ public class Client extends Thread{
 
 	public void run() {
 		
-		board = new Boolean[6][7];
-		for (int i = 0; i < 6;i++) {
-			for (int j = 0; j < 7; j++) {
+		board = new Boolean[7][6];
+		for (int i = 0; i < 7;i++) {
+			for (int j = 0; j < 6; j++) {
 				board[i][j] = false;
 			}
 		}
@@ -100,9 +100,9 @@ public class Client extends Thread{
     }
 
 	public void clearBoard() {
-		board = new Boolean[6][7];
-		for (int i = 0; i < 6;i++) {
-			for (int j = 0; j < 7; j++) {
+		board = new Boolean[7][6];
+		for (int i = 0; i < 7;i++) {
+			for (int j = 0; j < 6; j++) {
 				board[i][j] = false;
 			}
 		}
@@ -110,7 +110,7 @@ public class Client extends Thread{
 
 	public void findSpace(int col){
 		int indexOfMoved = 0;
-		for (int i = 6; i >= 0; i--){
+		for (int i = 5; i >= 0; i--){
 			if (!board[col][i].booleanValue()) {
 				board[col][i] = true;
 				indexOfMoved=i;
@@ -134,7 +134,7 @@ public class Client extends Thread{
 	// TODO: Check if column is full
 	public Boolean checkValidMove(int col){
 		Boolean and = new Boolean(true);
-		for (int i = 0; i < 7; i++){
+		for (int i = 0; i < 6; i++){
 			and = new Boolean(and.booleanValue() && board[col][i].booleanValue());
 		}
 		return new Boolean(!and.booleanValue());
@@ -152,7 +152,7 @@ public class Client extends Thread{
 			//add the thing to the game
 			//gives the position of the piece from top where the top = 0 and bottom = 6
 			int indexOfMoved = 0;
-			for (int i = 6; i >= 0; i--){
+			for (int i = 5; i >= 0; i--){
 				if (!board[col][i].booleanValue()) {
 					board[col][i] = true;
 					indexOfMoved=i;

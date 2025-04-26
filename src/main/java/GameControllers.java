@@ -22,6 +22,7 @@ public class GameControllers implements Initializable {
     @FXML private VBox fourth;
     @FXML private VBox fifth;
     @FXML private VBox sixth;
+    @FXML private VBox seventh;
     @FXML private VBox chatContent;
     @FXML private TextField messageTextField;
 
@@ -162,6 +163,22 @@ public class GameControllers implements Initializable {
         }
     }
 
+    @FXML public void seventhMove(){
+        System.out.println("Row 7 Clicked!");
+        if (clientThread.isMyTurn() && clientThread.checkValidMove(6)) {
+            clientThread.makeMove(6);
+            Circle piece = new Circle(42.0);
+            piece.setFill(Color.RED);
+
+            seventh.getChildren().set(clientThread.whichColor(), piece);
+
+        } else if (!clientThread.isMyTurn()) {
+            return;
+        } else {
+
+        }
+    }
+
     public static void updateColumn(Integer col){
         VBox toChange;
         if (col == 0){
@@ -174,8 +191,10 @@ public class GameControllers implements Initializable {
             toChange = theGameControllers.fourth;
         } else if (col == 4){
             toChange = theGameControllers.fifth;
-        } else {
+        } else if (col==5){
             toChange = theGameControllers.sixth;
+        } else {
+            toChange = theGameControllers.seventh;
         }
 
         Circle piece = new Circle(42.0);
