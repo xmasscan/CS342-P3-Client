@@ -73,16 +73,6 @@ public class MenuControllers {
         clientThread.connect();
     }
 
-    @FXML protected void waiting(){
-        clientThread.startGame();
-        try {
-           GuiClient.setScene(FXMLLoader.load(getClass().getResource("Game.fxml")));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
     @FXML protected void signOut(){
         try {
             // TODO: implement actual sign out

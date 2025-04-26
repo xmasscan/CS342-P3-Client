@@ -15,7 +15,6 @@ public class Client extends Thread{
 	int lastPiece;
 
 	Boolean[][] board;
-
 	String lastPlayer;
 
 	// User States
@@ -60,7 +59,6 @@ public class Client extends Thread{
 
 		while(true) {
 			// If the user logged in & connected to a match, begin waiting for messages.
-			
 			try {
 					ServerMessage message = (ServerMessage) in.readObject();
 					// updateInformation handler
@@ -92,6 +90,8 @@ public class Client extends Thread{
 					System.out.println(message.messageType);
 					System.out.println(message.argv.get(0));
 				} catch (Exception e) {
+					// In catch = no Server
+					// TODO: Handle Server DC
 					e.printStackTrace();
 				}
 			

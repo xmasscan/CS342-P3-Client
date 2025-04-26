@@ -86,7 +86,8 @@ public class GuiClient extends Application{
 						}
 						// Inform the client that the game is complete
 						try {
-							primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Rematch.fxml")), 1024, 768));
+							// TODO: Set this back to Rematch.fxml when rematch functionality is implemented
+							primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Menu.fxml")), 1024, 768));
 						}
 						catch (Exception e){
 							e.printStackTrace();

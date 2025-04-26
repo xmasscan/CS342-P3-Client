@@ -134,11 +134,14 @@ public class Message implements Serializable {
     public static Message acceptRematch(boolean hasAccepted, String player) {
         int messageType = 5;
 
-        Boolean intermediate = new Boolean(hasAccepted);
-
         // Build Arguments
         ArrayList<String> argv = new ArrayList<>();
-        argv.add(intermediate.toString());
+        if(hasAccepted){
+            argv.add("true");
+        }
+        else{
+            argv.add("false");
+        }
         argv.add(player);
         return new Message(messageType, argv);
     }
