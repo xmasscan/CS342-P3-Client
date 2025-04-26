@@ -27,17 +27,6 @@ public class GuiClient extends Application{
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
-					case 10:
-						try {
-							Parent root2 = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-							Scene scene2 = new Scene(root2, 1024, 768);
-							scene2.getStylesheets().add("menu.css");
-							primaryStage.setScene(scene2);
-							break;
-							
-						} catch (Exception e) {
-							// TODO: handle exception
-						}
 					case 8:
 						try {
 							LoginControllers.updateUsername(data.argv.get(0));
