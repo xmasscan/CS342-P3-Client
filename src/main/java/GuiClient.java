@@ -85,7 +85,10 @@ public class GuiClient extends Application{
 						}
 						// Inform the client that the game is complete
 						try {
-							primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Menu.fxml")), 1024, 768));
+							Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+							Scene scene = new Scene(root, 1024, 768);
+							scene.getStylesheets().add("menu.css");
+							primaryStage.setScene(scene);
 						}
 						catch (Exception e){
 							e.printStackTrace();
