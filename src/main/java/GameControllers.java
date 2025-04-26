@@ -22,7 +22,6 @@ public class GameControllers implements Initializable {
     @FXML private VBox fourth;
     @FXML private VBox fifth;
     @FXML private VBox sixth;
-    @FXML private ScrollPane chatbox;
     @FXML private VBox chatContent;
     @FXML private TextField messageTextField;
 

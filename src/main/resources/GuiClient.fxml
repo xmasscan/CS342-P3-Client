@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.geometry.Insets?>
-<GridPane fx:controller="LoginControllers" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<GridPane fx:id="root" fx:controller="LoginControllers" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
     <Text text="Connect4 Online"
           GridPane.columnIndex="0" GridPane.rowIndex="0"

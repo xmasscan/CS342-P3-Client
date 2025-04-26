@@ -23,9 +23,10 @@ public class GuiClient extends Application{
 					case 8:
 						try {
 							LoginControllers.updateUsername(data.argv.get(0));
-							Parent root2 = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-							Scene scene2 = new Scene(root2, 1024, 768);
-							primaryStage.setScene(scene2);
+							Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+							Scene scene = new Scene(root, 1024, 768);
+							scene.getStylesheets().add("menu.css");
+							primaryStage.setScene(scene);
 
 						} catch (Exception e) {
 							// TODO: handle exception
@@ -34,9 +35,10 @@ public class GuiClient extends Application{
 						break;
 					case 9:
 						try {
-							Parent root3 = FXMLLoader.load(getClass().getResource("Waiting.fxml"));
-							Scene scene3 = new Scene(root3, 1024, 768);
-							primaryStage.setScene(scene3);
+							Parent root = FXMLLoader.load(getClass().getResource("Waiting.fxml"));
+							Scene scene = new Scene(root, 1024, 768);
+							scene.getStylesheets().add("waiting.css");
+							primaryStage.setScene(scene);
 
 						} catch (Exception e) {
 							// TODO: handle exception
@@ -45,9 +47,10 @@ public class GuiClient extends Application{
 						break;
 					case 6:
 						try {
-							Parent root4 = FXMLLoader.load(getClass().getResource("Game.fxml"));
-							Scene scene4 = new Scene(root4, 1024, 768);
-							primaryStage.setScene(scene4);
+							Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
+							Scene scene = new Scene(root, 1024, 768);
+							scene.getStylesheets().add("game.css");
+							primaryStage.setScene(scene);
 
 						} catch (Exception e) {
 							// TODO: handle exception
@@ -88,8 +91,8 @@ public class GuiClient extends Application{
 		clientThread.start();
 
 		Parent root = FXMLLoader.load(getClass().getResource("GuiClient.fxml"));
-
 		Scene scene = new Scene(root, 1024, 768);
+		scene.getStylesheets().add("login.css");
 		this.primaryStage = primaryStage;
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Welcome to Connect 4!");
