@@ -24,15 +24,16 @@ public class MenuControllers {
     @FXML private Button Player;
     @FXML private Button Game;
 
-    @FXML static private Text currentUser;
-    @FXML static private Text Gold;
-    @FXML static private Text Elo;
-    @FXML static private ImageView image;
+    @FXML private Text currentUser;
+    @FXML private Text Elo;
     @FXML private Text statusText;
 
     Client clientThread = GuiClient.clientThread;
 
+    static MenuControllers theMenuControllers;
+
     public void initialize() {
+        theMenuControllers = this;
         // If this isn't changed, then the user has returned from a match!
         System.out.println(clientThread.matched);
         if(clientThread.matched){
@@ -58,12 +59,9 @@ public class MenuControllers {
 
     // When this is implemented later, we should have a way to store this in the client thread and pull info from here
     // clientThread should handle current info of current player, GUI should read from it with getters
-    @FXML static public void updateInformation(ServerMessage msg){
-        currentUser.setText("Current User: " + msg.argv.get(0));
-        Gold.setText("Gold: " + msg.argv.get(1));
-        Elo.setText("Elo: " + msg.argv.get(2));
-        Image temp = new Image("image" + msg.argv.get(3) + ".png");
-        image.setImage(temp);
+    @FXML static public void updateInformation(){
+        theMenuControllers.currentUser.setText("Current User: " + theMenuControllers.clientThread.username);
+        theMenuControllers.Elo.setText("Elo: " + theMenuControllers.clientThread.elo);
     }
 
     @FXML protected void startGame(){

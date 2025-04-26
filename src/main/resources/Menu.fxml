@@ -30,12 +30,10 @@
         <!--<User/>-->
         <Text fx:id = "currentUser" text = "currentUser: "></Text>
         <HBox>
-            <ImageView fx:id = "image">
+            
                 
-            </ImageView>
             <VBox>
                 <children>
-                    <Text fx:id = "Gold" text = "Gold: "></Text>
                     <Text fx:id = "Elo" text = "Elo: "></Text>
                 </children>
             </VBox>

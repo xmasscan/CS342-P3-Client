@@ -32,6 +32,7 @@ public class Client extends Thread{
 	// 1 = accepted
 	// Reset to -1 after value is handled.
 	int rematchState = -1;
+	int elo = 1500;
 
 	// User Info
 	String username;
@@ -74,7 +75,7 @@ public class Client extends Thread{
 						moveOrder = 0;
 					}
 					else if (message.messageType == 5) {
-						MenuControllers.updateInformation(message);
+						elo = Integer.parseInt(message.argv.get(2));
 					}
 					else if (message.messageType == 4) {
 						clearBoard();
