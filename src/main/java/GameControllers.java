@@ -25,7 +25,41 @@ public class GameControllers implements Initializable {
     @FXML private VBox chatContent;
     @FXML private TextField messageTextField;
 
+    @FXML private Text t1test;
+    @FXML private Text t2test;
+    @FXML private Text t3test;
+    @FXML private Text t4test;
+    @FXML private Text t5test;
+    @FXML private Text t6test;
+    @FXML private Text t7test;
+    @FXML private Text t8test;
+    @FXML private Text t9test;
+    @FXML private Text t10test;
+    @FXML private Text t11test;
+    @FXML private Text t12test;
+    @FXML private Text t13test;
+    @FXML private Text t14test;
+    @FXML private Text t15test;
+    @FXML private Text t16test;
+    @FXML private Text t17test;
+    @FXML private Text t18test;
+    @FXML private Text t19test;
+    @FXML private Text t20test;
+    @FXML private Text t21test;
+    @FXML private Text t22test;
+    @FXML private Text t23test;
+    @FXML private Text t24test;
+    @FXML private Text t25test;
+    @FXML private Text t26test;
+    @FXML private Text t27test;
+    @FXML private Text t28test;
+    @FXML private Text t29test;
+    @FXML private Text t30test;
+
+    ArrayList<Text> messages = new ArrayList<Text>();
+
     static Client clientThread = GuiClient.clientThread;
+
 
     static GameControllers theGameControllers;
 
@@ -48,6 +82,7 @@ public class GameControllers implements Initializable {
         else{
             System.out.println("Chat content is null");
         }
+
     }
 
     public void sendMessage(ActionEvent actionEvent) {
@@ -182,4 +217,6 @@ public class GameControllers implements Initializable {
         piece.setFill(Color.YELLOW);
         toChange.getChildren().set(clientThread.whichColor(), piece);
     }
+
+
 }

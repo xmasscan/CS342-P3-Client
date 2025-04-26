@@ -23,6 +23,7 @@ public class ServerMessage implements Serializable {
      *  7 - does move
      *  8 - login
      *  9 - waiting()
+     *  1o - acceptchat
      * @param argv
      */
     ServerMessage(int messageType, ArrayList<String> argv) {
@@ -89,6 +90,13 @@ public class ServerMessage implements Serializable {
         ArrayList<String> argv = new ArrayList<>();
         // Casts int to Integer, then runs toString() on Integer object
         argv.add(((Integer) row).toString());
+        return new ServerMessage(messageType, argv);
+    }
+
+    public static ServerMessage acceptChat(){
+        int messageType = 10;
+        ArrayList<String> argv = new ArrayList<>();
+        argv.add("OK");
         return new ServerMessage(messageType, argv);
     }
 
