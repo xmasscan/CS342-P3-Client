@@ -37,18 +37,22 @@ public class MenuControllers {
         System.out.println(clientThread.matched);
         if(clientThread.matched){
             // Update Status with win!
-            if(clientThread.winner){
+            if(clientThread.winner == 1){
                 Platform.runLater(()->{
                     statusText.setText("You Won!");
                 });
             }
             // Update status with loss :(
-            else{
+            else if (clientThread.winner == 0){
                 Platform.runLater(()->{
                     statusText.setText("You Lost!");
                 });
+            } else {
+                Platform.runLater(()->{
+                    statusText.setText("Connect4 played perfectly is allways a draw!");
+                });
             }
-            clientThread.winner = false;
+            clientThread.winner = 0;
         }
     }
 

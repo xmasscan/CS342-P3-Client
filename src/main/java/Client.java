@@ -24,7 +24,7 @@ public class Client extends Thread{
 	// Is user in a live match?
 	boolean matched = false;
 	int wait = 0;
-	boolean winner = false;
+	int winner = 0;
 
 	// User Info
 	String username;

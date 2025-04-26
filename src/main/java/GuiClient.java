@@ -67,7 +67,11 @@ public class GuiClient extends Application{
 						String state = data.argv.get(0);
 						// If player is a winner, update the thread to reflect that
 						if(state.compareTo("Winner") == 0){
-							clientThread.winner = true;
+							clientThread.winner = 1;
+						} else if (state.compareTo("Loser") == 0){
+							clientThread.winner = 0;
+						} else {
+							clientThread.winner = 2;
 						}
 						// Inform the client that the game is complete
 						try {
