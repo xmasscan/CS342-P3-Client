@@ -244,6 +244,16 @@ public class Client extends Thread{
 		}
 	}
 
+	public void sendAll(String username, String message) {
+		Message msg = Message.chatAll(username,message);
+		try {
+			out.writeObject(msg);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	// Server Message Standard:
 	// 0 = Accept
 	// 1 = Reject

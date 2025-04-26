@@ -54,7 +54,12 @@ public class GameControllers implements Initializable {
     public void sendMessage(ActionEvent actionEvent) {
         String message = messageTextField.getText();
         System.out.println("Message sent: " + clientThread.username + ": " +  message);
-        clientThread.send(clientThread.username,message);
+        if(message.startsWith("@everyone")) {
+            clientThread.sendAll(clientThread.username, message);
+        }
+        else {
+            clientThread.send(clientThread.username, message);
+        }
     }
 
     @Override
