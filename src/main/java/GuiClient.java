@@ -20,17 +20,7 @@ public class GuiClient extends Application{
 		clientThread = new Client(data -> {
 			Platform.runLater( () -> {
 				switch(((ServerMessage) data).messageType) {
-					case 10:
-						try {
-							Parent root2 = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-							Scene scene2 = new Scene(root2, 1024, 768);
-							scene2.getStylesheets().add("menu.css");
-							primaryStage.setScene(scene2);
-							break;
-							
-						} catch (Exception e) {
-							// TODO: handle exception
-						}
+					// Login
 					case 8:
 						try {
 							LoginControllers.updateUsername(data.argv.get(0));
@@ -44,13 +34,13 @@ public class GuiClient extends Application{
 							e.printStackTrace();
 						}
 						break;
+					// Waiting
 					case 9:
 						try {
 							Parent root = FXMLLoader.load(getClass().getResource("Waiting.fxml"));
 							Scene scene = new Scene(root, 1024, 768);
 							scene.getStylesheets().add("waiting.css");
 							primaryStage.setScene(scene);
-
 						} catch (Exception e) {
 							// TODO: handle exception
 							e.printStackTrace();
@@ -86,7 +76,6 @@ public class GuiClient extends Application{
 						}
 						// Inform the client that the game is complete
 						try {
-							// TODO: Set this back to Rematch.fxml when rematch functionality is implemented
 							primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Menu.fxml")), 1024, 768));
 						}
 						catch (Exception e){
@@ -100,6 +89,14 @@ public class GuiClient extends Application{
 						String message = data.argv.get(1);
 						GameControllers.updateChat(username,message);
 						break;
+					// Rematch ServerMessage handler
+					case 10:
+						try {
+							primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Rematch.fxml")), 1024, 768));
+						}
+						catch (Exception e){
+							e.printStackTrace();
+						}						break;
 				}
 
 			});

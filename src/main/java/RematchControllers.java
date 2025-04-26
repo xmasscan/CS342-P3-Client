@@ -14,6 +14,7 @@ public class RematchControllers {
 
     public void rematchYes() {
         try {
+            clientThread.rematchState = 1;
             clientThread.out.writeObject(Message.acceptRematch(true));
         } catch (Exception e) {
             // TODO: Handle Disconnect
@@ -23,11 +24,13 @@ public class RematchControllers {
 
     public void rematchNo() {
         try {
+            clientThread.rematchState = 0;
             clientThread.out.writeObject(Message.acceptRematch(false));
         } catch (Exception e) {
             // TODO: Handle Disconnect
             e.printStackTrace();
         }
+
     }
 
 

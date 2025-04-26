@@ -21,8 +21,9 @@ public class ServerMessage implements Serializable {
      *  5 - update Information
      *  6 - in Match
      *  7 - does move
-     *  8 - login
-     *  9 - waiting()
+     *  8 - Login
+     *  9 - Waiting
+     *  10 - Rematch
      * @param argv
      */
     ServerMessage(int messageType, ArrayList<String> argv) {
@@ -155,6 +156,19 @@ public class ServerMessage implements Serializable {
         // Cast order to an Integer object, then invoke toString on it
         // conversion from int to string
         argv.add(((Integer) order).toString());
+        return new ServerMessage(messageType, argv);
+    }
+
+    /**
+     * rematch
+     * Does not INITIATE a Rematch, just redirects client to go to rematch screen.
+     * @return
+     *  A ServerMessage informing the user to go to the rematch screen.
+     */
+    public static ServerMessage rematch(){
+        int messageType = 10;
+        ArrayList<String> argv = new ArrayList<>();
+        argv.add("Rematch");
         return new ServerMessage(messageType, argv);
     }
 }

@@ -14,10 +14,6 @@ import javafx.scene.text.Text;
 public class WaitingControllers{
 
     Client clientThread = GuiClient.clientThread;
-    String file = null;
-
     @FXML private Text WaitingText;
-
-    
 }
 

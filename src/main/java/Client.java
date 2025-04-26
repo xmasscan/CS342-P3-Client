@@ -26,6 +26,12 @@ public class Client extends Thread{
 	boolean matched = false;
 	int wait = 0;
 	int winner = 0;
+	// Records whether the client has decided to accept the rematch.
+	// -1 = Undecided
+	// 0 = rejected
+	// 1 = accepted
+	// Reset to -1 after value is handled.
+	int rematchState = -1;
 
 	// User Info
 	String username;
@@ -33,7 +39,6 @@ public class Client extends Thread{
 	Consumer<ServerMessage> msgClient;
 
 	Client(Consumer<ServerMessage> call){
-	
 		msgClient = call;
 	}
 
@@ -270,7 +275,6 @@ public class Client extends Thread{
 	// 1 = Reject
 	public boolean validate(ServerMessage msg){
 		if(msg.messageType == 0){
-			
 			return true;
 		}
 		else if(msg.messageType == 1){
