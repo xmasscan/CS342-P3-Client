@@ -25,8 +25,7 @@ public class GuiClient extends Application{
 						try {
 							MenuControllers.updateInformation();
 						} catch (Exception e) {
-							e.printStackTrace();
-							
+//							e.printStackTrace();
 						}
 						break;
 					case 8:
